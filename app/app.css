@@ -1,15 +1,210 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif,
-    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-sans: "Plus Jakarta Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-heading: "Outfit", "Plus Jakarta Sans", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --color-canvas: #F4F8FC;
+  --color-canvas-alt: #F0F8FF;
+  --color-surface: #FFFFFF;
+  --color-surface-subtle: #EBF3FC;
+  --color-navy: #0E1B2A;
+  --color-navy-light: #162C44;
+  --color-steel: #3E6FA6;
+  --color-steel-dark: #2A5280;
+  --color-indigo-brand: #635BFF;
+  --color-muted: #5A6A7D;
+  --color-border-card: #E2E8F0;
 }
 
-html,
-body {
-  @apply bg-white dark:bg-gray-950;
+html {
+  scroll-behavior: smooth;
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+}
 
-  @media (prefers-color-scheme: dark) {
-    color-scheme: dark;
-  }
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+  letter-spacing: -0.025em;
+}
+
+body,
+button,
+input,
+select,
+textarea {
+  font-family: var(--font-sans);
+}
+
+body {
+  background-color: #F4F8FC;
+  color: #0E1B2A;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Glassmorphism helpers */
+.glass-nav {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+}
+
+.glass-card {
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  box-shadow: 0 10px 30px -10px rgba(14, 27, 42, 0.05), 0 2px 6px -2px rgba(14, 27, 42, 0.02);
+}
+
+.glass-card-interactive {
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  box-shadow: 0 10px 30px -10px rgba(14, 27, 42, 0.06);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-card-interactive:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px -12px rgba(62, 111, 166, 0.15), 0 4px 12px -2px rgba(14, 27, 42, 0.04);
+  border-color: #CBD5E1;
+}
+
+/* Gradient accents */
+.gradient-text {
+  background: linear-gradient(135deg, #0E1B2A 0%, #3E6FA6 60%, #635BFF 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gradient-brand {
+  background: linear-gradient(135deg, #3E6FA6 0%, #635BFF 100%);
+}
+
+.gradient-gold {
+  background: linear-gradient(135deg, #B45309 0%, #D97706 100%);
+}
+
+.badge-pill {
+  background: #EBF3FC;
+  border: 1px solid #D0E2F5;
+  color: #2C527D;
+}
+
+/* Modern tactile button classes */
+.btn-highlight {
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18), 0 2px 4px rgba(14, 27, 42, 0.08);
+}
+
+.btn-highlight-light {
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8), 0 1px 3px rgba(14, 27, 42, 0.05);
+}
+
+.btn-press:active {
+  transform: scale(0.98);
+}
+
+/* Segmented control pill active state */
+.segmented-pill-active {
+  background: #FFFFFF;
+  color: #0E1B2A;
+  box-shadow: 0 1px 3px rgba(14, 27, 42, 0.08), 0 1px 2px rgba(14, 27, 42, 0.04);
+}
+
+/* --- Neumorphism Styles (Reference Spec) --- */
+.neu-navbar-shell {
+  background: #EBEDF2;
+  box-shadow: 
+    0 12px 32px -4px rgba(148, 163, 184, 0.3),
+    4px 5px 12px rgba(160, 172, 186, 0.4),
+    -4px -5px 12px rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.75);
+}
+
+.neu-inset-track {
+  background: #E1E5EB;
+  box-shadow: 
+    inset 2.5px 2.5px 5px rgba(160, 172, 186, 0.5),
+    inset -2.5px -2.5px 5px rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(203, 213, 225, 0.35);
+}
+
+.neu-pill-active {
+  background: #EBEDF2;
+  box-shadow: 
+    2px 2.5px 5px rgba(160, 172, 186, 0.45),
+    -2px -2.5px 5px rgba(255, 255, 255, 0.95);
+  color: #0E1B2A;
+}
+
+.neu-circle-btn {
+  background: #EBEDF2;
+  box-shadow: 
+    2.5px 2.5px 6px rgba(160, 172, 186, 0.45),
+    -2.5px -2.5px 6px rgba(255, 255, 255, 0.95);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.neu-circle-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 
+    3.5px 3.5px 8px rgba(160, 172, 186, 0.5),
+    -3.5px -3.5px 8px rgba(255, 255, 255, 1);
+}
+
+.neu-circle-btn:active {
+  transform: translateY(0);
+  box-shadow: 
+    inset 2px 2px 4px rgba(160, 172, 186, 0.55),
+    inset -2px -2px 4px rgba(255, 255, 255, 0.9);
+}
+
+.neu-pill-btn {
+  background: #EBEDF2;
+  box-shadow: 
+    3px 3px 7px rgba(160, 172, 186, 0.45),
+    -3px -3px 7px rgba(255, 255, 255, 0.95);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.neu-pill-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 
+    4px 4px 10px rgba(160, 172, 186, 0.5),
+    -4px -4px 10px rgba(255, 255, 255, 1);
+}
+
+.neu-pill-btn:active {
+  transform: translateY(0);
+  box-shadow: 
+    inset 2px 2px 4px rgba(160, 172, 186, 0.55),
+    inset -2px -2px 4px rgba(255, 255, 255, 0.9);
+}
+
+
+/* Custom phone frame styling */
+.phone-mockup-frame {
+  box-shadow: 0 25px 60px -15px rgba(14, 27, 42, 0.25), 0 0 0 10px #1E293B, 0 0 0 12px #94A3B8;
+  border-radius: 44px;
+}
+
+/* Smooth custom scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #F1F5F9;
+}
+::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94A3B8;
 }
