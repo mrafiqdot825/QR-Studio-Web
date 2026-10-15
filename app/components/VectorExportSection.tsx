@@ -1,11 +1,14 @@
 import { useState } from "react";
-import { CheckCircle2, XCircle, Printer } from "lucide-react";
+import { CheckCircle2, XCircle } from "lucide-react";
 
 export function VectorExportSection() {
   const [zoomLevel, setZoomLevel] = useState<number>(4);
 
   return (
-    <section id="vector-quality" className="py-20 md:py-28 relative scroll-mt-20">
+    <section
+      id="vector-quality"
+      className="py-20 md:py-28 relative scroll-mt-20"
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header with Morrow Signature Pattern */}
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
@@ -14,10 +17,13 @@ export function VectorExportSection() {
           </p>
           <h2 className="h2-editorial font-bold text-[var(--ink)]">
             From phone screen, <br />
-            <span className="italic font-normal text-[var(--plum)]">to 50-foot billboard.</span>
+            <span className="italic font-normal text-[var(--plum)]">
+              to 50-foot billboard.
+            </span>
           </h2>
           <p className="text-base sm:text-lg text-[var(--ink-muted)] max-w-xl mx-auto leading-relaxed">
-            Never worry about blur, compression artifacts, or pixelation. Your codes scan reliably at any physical distance or scale.
+            Never worry about blur, compression artifacts, or pixelation. Your
+            codes scan reliably at any physical distance or scale.
           </p>
         </div>
 
@@ -31,7 +37,9 @@ export function VectorExportSection() {
                   Microscopic Zoom ({zoomLevel}x Magnification)
                 </span>
                 <div className="flex items-center gap-2">
-                  <span className="text-xs text-[var(--ink-muted)] font-medium">Zoom Level:</span>
+                  <span className="text-xs text-[var(--ink-muted)] font-medium">
+                    Zoom Level:
+                  </span>
                   <div className="flex items-center gap-1 bg-white/70 p-1 rounded-full border border-[var(--border-subtle)]">
                     {[2, 4, 8].map((lvl) => (
                       <button
@@ -59,10 +67,35 @@ export function VectorExportSection() {
                   </div>
 
                   <div className="w-44 h-44 rounded-2xl overflow-hidden bg-white border border-[var(--peach)]/50 flex items-center justify-center p-4 relative shadow-inner">
-                    <svg viewBox="0 0 100 100" className="w-full h-full" style={{ filter: `blur(${zoomLevel * 0.6}px)` }}>
-                      <rect x="10" y="10" width="80" height="80" rx="15" fill="#1A1416" />
-                      <rect x="25" y="25" width="50" height="50" rx="8" fill="#FFFFFF" />
-                      <rect x="38" y="38" width="24" height="24" rx="4" fill="#1A1416" />
+                    <svg
+                      viewBox="0 0 100 100"
+                      className="w-full h-full"
+                      style={{ filter: `blur(${zoomLevel * 0.6}px)` }}
+                    >
+                      <rect
+                        x="10"
+                        y="10"
+                        width="80"
+                        height="80"
+                        rx="15"
+                        fill="#1A1416"
+                      />
+                      <rect
+                        x="25"
+                        y="25"
+                        width="50"
+                        height="50"
+                        rx="8"
+                        fill="#FFFFFF"
+                      />
+                      <rect
+                        x="38"
+                        y="38"
+                        width="24"
+                        height="24"
+                        rx="4"
+                        fill="#1A1416"
+                      />
                     </svg>
                   </div>
 
@@ -85,9 +118,30 @@ export function VectorExportSection() {
 
                   <div className="w-44 h-44 rounded-2xl overflow-hidden bg-white border border-[var(--sage)] flex items-center justify-center p-4 relative shadow-inner">
                     <svg viewBox="0 0 100 100" className="w-full h-full">
-                      <rect x="10" y="10" width="80" height="80" rx="20" fill="#4A0F3A" />
-                      <rect x="25" y="25" width="50" height="50" rx="12" fill="#FFFFFF" />
-                      <rect x="38" y="38" width="24" height="24" rx="6" fill="#4A0F3A" />
+                      <rect
+                        x="10"
+                        y="10"
+                        width="80"
+                        height="80"
+                        rx="20"
+                        fill="#4A0F3A"
+                      />
+                      <rect
+                        x="25"
+                        y="25"
+                        width="50"
+                        height="50"
+                        rx="12"
+                        fill="#FFFFFF"
+                      />
+                      <rect
+                        x="38"
+                        y="38"
+                        width="24"
+                        height="24"
+                        rx="6"
+                        fill="#4A0F3A"
+                      />
                     </svg>
                   </div>
 
@@ -96,7 +150,8 @@ export function VectorExportSection() {
                       Razor-sharp mathematical paths
                     </span>
                     <p className="text-[11px] text-[var(--ink-muted)] mt-1">
-                      Infinite clarity for offset printing, laser etching & signs.
+                      Infinite clarity for offset printing, laser etching &
+                      signs.
                     </p>
                   </div>
                 </div>
@@ -112,12 +167,14 @@ export function VectorExportSection() {
                 Export once, print anywhere without compromise.
               </h3>
               <p className="text-sm sm:text-base text-[var(--ink-muted)] leading-relaxed">
-                When you scale a standard PNG to fit a trade-show banner or storefront window,
-                the barcode edges fuzz and cameras fail to decode.
+                When you scale a standard PNG to fit a trade-show banner or
+                storefront window, the barcode edges fuzz and cameras fail to
+                decode.
               </p>
               <p className="text-sm sm:text-base text-[var(--ink-muted)] leading-relaxed">
-                QRLab outputs clean, standards-compliant SVG files. Drop them straight into
-                Adobe InDesign, Illustrator, Canva, or Figma with mathematically perfect vector paths.
+                QRLab outputs clean, standards-compliant SVG files. Drop them
+                straight into Adobe InDesign, Illustrator, Canva, or Figma with
+                mathematically perfect vector paths.
               </p>
             </div>
           </div>

@@ -26,8 +26,9 @@ export function Footer() {
               </span>
             </div>
             <p className="text-sm text-[var(--ink-muted)] leading-relaxed max-w-sm">
-              Artistic 3D & Vector QR Maker with 100% on-device privacy. Built for
-              freelancers, business owners, graphic designers, and event organizers.
+              Artistic 3D & Vector QR Maker with 100% on-device privacy. Built
+              for freelancers, business owners, graphic designers, and event
+              organizers.
             </p>
             <div className="text-xs text-[var(--ink-muted)]">
               Crafted by{" "}
@@ -49,27 +50,42 @@ export function Footer() {
             </h4>
             <ul className="space-y-2 text-sm">
               <li>
-                <a href="#studio" className="hover:text-[var(--plum)] transition-colors">
+                <a
+                  href="#studio"
+                  className="hover:text-[var(--plum)] transition-colors"
+                >
                   Interactive Studio
                 </a>
               </li>
               <li>
-                <a href="#customization" className="hover:text-[var(--plum)] transition-colors">
+                <a
+                  href="#customization"
+                  className="hover:text-[var(--plum)] transition-colors"
+                >
                   Custom Shapes & Eyes
                 </a>
               </li>
               <li>
-                <a href="#templates" className="hover:text-[var(--plum)] transition-colors">
+                <a
+                  href="#templates"
+                  className="hover:text-[var(--plum)] transition-colors"
+                >
                   Designer Templates
                 </a>
               </li>
               <li>
-                <a href="#vector-quality" className="hover:text-[var(--plum)] transition-colors">
+                <a
+                  href="#vector-quality"
+                  className="hover:text-[var(--plum)] transition-colors"
+                >
                   Vector SVG Export
                 </a>
               </li>
               <li>
-                <a href="#download" className="hover:text-[var(--plum)] transition-colors">
+                <a
+                  href="#download"
+                  className="hover:text-[var(--plum)] transition-colors"
+                >
                   Download Android APK
                 </a>
               </li>
@@ -93,22 +109,19 @@ export function Footer() {
                 </a>
               </li>
               <li>
-                <a href="#privacy" className="hover:text-[var(--plum)] transition-colors">
+                <a
+                  href="#privacy"
+                  className="hover:text-[var(--plum)] transition-colors"
+                >
                   Offline Guarantee
                 </a>
               </li>
+
               <li>
                 <a
-                  href="https://github.com/mrafiqdot825/QRLab/blob/main/LICENSE"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href="#faq"
                   className="hover:text-[var(--plum)] transition-colors"
                 >
-                  Open Source License
-                </a>
-              </li>
-              <li>
-                <a href="#faq" className="hover:text-[var(--plum)] transition-colors">
                   FAQ & Commercial Rights
                 </a>
               </li>
@@ -134,13 +147,13 @@ export function Footer() {
               </li>
               <li>
                 <a
-                  href="https://github.com/mrafiqdot825/QRLab"
+                  href="https://github.com/mrafiqdot825"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-1.5 hover:text-[var(--plum)] transition-colors"
                 >
                   <GithubIcon className="w-3.5 h-3.5" />
-                  <span>GitHub Repository</span>
+                  <span>GitHub</span>
                 </a>
               </li>
               <li>

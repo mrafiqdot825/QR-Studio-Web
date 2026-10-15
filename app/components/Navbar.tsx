@@ -1,13 +1,5 @@
 import { useState, useEffect } from "react";
-import {
-  QrCode,
-  Menu,
-  X,
-  Home,
-  Compass,
-  Layers,
-  Smartphone,
-} from "lucide-react";
+import { Menu, X, Home, Compass, Layers, Smartphone } from "lucide-react";
 
 export function Navbar() {
   const [activeTab, setActiveTab] = useState("Overview");

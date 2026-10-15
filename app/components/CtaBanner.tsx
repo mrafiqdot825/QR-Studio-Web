@@ -1,5 +1,5 @@
-import { Sparkles, ShieldCheck, Smartphone } from "lucide-react";
-import { GithubIcon, LeafSpray, BotanicalBranch } from "./icons";
+import { ShieldCheck } from "lucide-react";
+import { LeafSpray, BotanicalBranch } from "./icons";
 import { Button } from "./ui/Button";
 
 export function CtaBanner() {

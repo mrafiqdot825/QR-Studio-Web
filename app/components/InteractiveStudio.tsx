@@ -9,10 +9,6 @@ import {
   Download,
   Copy,
   Check,
-  Sparkles,
-  Sliders,
-  Palette,
-  Eye,
   ShieldCheck,
   CheckCircle2,
 } from "lucide-react";
@@ -23,18 +19,16 @@ import {
   downloadSVG,
   downloadPNG,
 } from "../utils/qr-generator";
-import type {
-  ModuleShape,
-  EyeStyle,
-  LogoPreset,
-} from "../utils/qr-generator";
+import type { ModuleShape, EyeStyle, LogoPreset } from "../utils/qr-generator";
 import { Button } from "./ui/Button";
 
 type FormatTab = "url" | "wifi" | "vcard" | "email" | "phone" | "text";
 
 export function InteractiveStudio() {
   const [activeFormat, setActiveFormat] = useState<FormatTab>("url");
-  const [selectedTheme, setSelectedTheme] = useState<ThemePreset>(THEME_PRESETS[0]);
+  const [selectedTheme, setSelectedTheme] = useState<ThemePreset>(
+    THEME_PRESETS[0],
+  );
   const [moduleShape, setModuleShape] = useState<ModuleShape>("rounded");
   const [eyeStyle, setEyeStyle] = useState<EyeStyle>("rounded");
   const [logo, setLogo] = useState<LogoPreset>("qrlab");
@@ -59,11 +53,15 @@ export function InteractiveStudio() {
 
   const [emailTo, setEmailTo] = useState("contact@qrlab.me");
   const [emailSubject, setEmailSubject] = useState("Partnership Inquiry");
-  const [emailBody, setEmailBody] = useState("Hello! I loved creating QR codes with QRLab.");
+  const [emailBody, setEmailBody] = useState(
+    "Hello! I loved creating QR codes with QRLab.",
+  );
 
   const [phoneNumber, setPhoneNumber] = useState("+15550199825");
 
-  const [textInput, setTextInput] = useState("Scan-Stopping Artistic QR Codes with 100% On-Device Privacy.");
+  const [textInput, setTextInput] = useState(
+    "Scan-Stopping Artistic QR Codes with 100% On-Device Privacy.",
+  );
 
   // Generate payload string
   const currentPayload = useMemo(() => {
@@ -131,16 +129,39 @@ export function InteractiveStudio() {
   };
 
   const formats = [
-    { id: "url", label: "Website", icon: Globe, pastel: "bg-[var(--lavender)]" },
+    {
+      id: "url",
+      label: "Website",
+      icon: Globe,
+      pastel: "bg-[var(--lavender)]",
+    },
     { id: "wifi", label: "Wi-Fi", icon: Wifi, pastel: "bg-[var(--sage)]" },
-    { id: "vcard", label: "vCard", icon: Contact, pastel: "bg-[var(--butter)]" },
+    {
+      id: "vcard",
+      label: "vCard",
+      icon: Contact,
+      pastel: "bg-[var(--butter)]",
+    },
     { id: "email", label: "Email", icon: Mail, pastel: "bg-[var(--peach)]" },
-    { id: "phone", label: "Phone", icon: Phone, pastel: "bg-[var(--periwinkle)]" },
-    { id: "text", label: "Text", icon: FileText, pastel: "bg-[var(--bg-canvas)]" },
+    {
+      id: "phone",
+      label: "Phone",
+      icon: Phone,
+      pastel: "bg-[var(--periwinkle)]",
+    },
+    {
+      id: "text",
+      label: "Text",
+      icon: FileText,
+      pastel: "bg-[var(--bg-canvas)]",
+    },
   ];
 
   return (
-    <section id="studio" className="py-20 md:py-28 bg-[var(--bg-surface)] relative scroll-mt-24">
+    <section
+      id="studio"
+      className="py-20 md:py-28 bg-[var(--bg-surface)] relative scroll-mt-24"
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-14 space-y-3">
@@ -149,10 +170,13 @@ export function InteractiveStudio() {
           </p>
           <h2 className="h2-editorial font-bold text-[var(--ink)]">
             Design in real-time, <br />
-            <span className="italic font-normal text-[var(--plum)]">tailored to you.</span>
+            <span className="italic font-normal text-[var(--plum)]">
+              tailored to you.
+            </span>
           </h2>
           <p className="text-base sm:text-lg text-[var(--ink-muted)] max-w-xl mx-auto leading-relaxed">
-            Customize eye geometries, module curves, curated editorial palettes, and download vector SVG instantly.
+            Customize eye geometries, module curves, curated editorial palettes,
+            and download vector SVG instantly.
           </p>
         </div>
 
@@ -180,7 +204,9 @@ export function InteractiveStudio() {
                       }`}
                     >
                       <Icon className="w-5 h-5 mb-1" />
-                      <span className="text-xs truncate w-full text-center">{fmt.label}</span>
+                      <span className="text-xs truncate w-full text-center">
+                        {fmt.label}
+                      </span>
                     </button>
                   );
                 })}
@@ -201,7 +227,10 @@ export function InteractiveStudio() {
               {/* URL Input */}
               {activeFormat === "url" && (
                 <div className="space-y-3">
-                  <label htmlFor="url-input" className="block text-sm font-semibold text-[var(--ink)]">
+                  <label
+                    htmlFor="url-input"
+                    className="block text-sm font-semibold text-[var(--ink)]"
+                  >
                     Target Destination URL
                   </label>
                   <input
@@ -213,7 +242,8 @@ export function InteractiveStudio() {
                     className="w-full px-4 py-3 bg-[var(--bg-surface)] border border-[var(--border-subtle)] rounded-2xl text-[var(--ink)] placeholder:text-[var(--ink-muted)]/60 text-sm focus:outline-none focus:ring-2 focus:ring-[var(--plum)] focus:bg-white transition-all"
                   />
                   <p className="text-xs text-[var(--ink-muted)]">
-                    Direct permanent URL. Zero intermediate redirects, zero subscription expiration.
+                    Direct permanent URL. Zero intermediate redirects, zero
+                    subscription expiration.
                   </p>
                 </div>
               )}
@@ -222,7 +252,10 @@ export function InteractiveStudio() {
               {activeFormat === "wifi" && (
                 <div className="space-y-4">
                   <div>
-                    <label htmlFor="wifi-ssid" className="block text-sm font-semibold text-[var(--ink)] mb-1">
+                    <label
+                      htmlFor="wifi-ssid"
+                      className="block text-sm font-semibold text-[var(--ink)] mb-1"
+                    >
                       Network Name (SSID)
                     </label>
                     <input
@@ -236,7 +269,10 @@ export function InteractiveStudio() {
                   </div>
 
                   <div>
-                    <label htmlFor="wifi-pass" className="block text-sm font-semibold text-[var(--ink)] mb-1">
+                    <label
+                      htmlFor="wifi-pass"
+                      className="block text-sm font-semibold text-[var(--ink)] mb-1"
+                    >
                       Network Password
                     </label>
                     <input
@@ -250,7 +286,9 @@ export function InteractiveStudio() {
                   </div>
 
                   <div className="flex flex-wrap items-center gap-4 pt-1 text-xs">
-                    <span className="font-semibold text-[var(--ink)]">Security:</span>
+                    <span className="font-semibold text-[var(--ink)]">
+                      Security:
+                    </span>
                     {(["WPA", "WEP", "nopass"] as const).map((enc) => (
                       <button
                         key={enc}
@@ -282,7 +320,12 @@ export function InteractiveStudio() {
               {activeFormat === "vcard" && (
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
                   <div>
-                    <label htmlFor="vcard-first" className="block text-xs font-semibold text-[var(--ink)] mb-1">First Name</label>
+                    <label
+                      htmlFor="vcard-first"
+                      className="block text-xs font-semibold text-[var(--ink)] mb-1"
+                    >
+                      First Name
+                    </label>
                     <input
                       id="vcard-first"
                       type="text"
@@ -292,7 +335,12 @@ export function InteractiveStudio() {
                     />
                   </div>
                   <div>
-                    <label htmlFor="vcard-last" className="block text-xs font-semibold text-[var(--ink)] mb-1">Last Name</label>
+                    <label
+                      htmlFor="vcard-last"
+                      className="block text-xs font-semibold text-[var(--ink)] mb-1"
+                    >
+                      Last Name
+                    </label>
                     <input
                       id="vcard-last"
                       type="text"
@@ -302,7 +350,12 @@ export function InteractiveStudio() {
                     />
                   </div>
                   <div>
-                    <label htmlFor="vcard-org" className="block text-xs font-semibold text-[var(--ink)] mb-1">Company / Organization</label>
+                    <label
+                      htmlFor="vcard-org"
+                      className="block text-xs font-semibold text-[var(--ink)] mb-1"
+                    >
+                      Company / Organization
+                    </label>
                     <input
                       id="vcard-org"
                       type="text"
@@ -312,7 +365,12 @@ export function InteractiveStudio() {
                     />
                   </div>
                   <div>
-                    <label htmlFor="vcard-title" className="block text-xs font-semibold text-[var(--ink)] mb-1">Job Title</label>
+                    <label
+                      htmlFor="vcard-title"
+                      className="block text-xs font-semibold text-[var(--ink)] mb-1"
+                    >
+                      Job Title
+                    </label>
                     <input
                       id="vcard-title"
                       type="text"
@@ -322,7 +380,12 @@ export function InteractiveStudio() {
                     />
                   </div>
                   <div>
-                    <label htmlFor="vcard-phone" className="block text-xs font-semibold text-[var(--ink)] mb-1">Phone Number</label>
+                    <label
+                      htmlFor="vcard-phone"
+                      className="block text-xs font-semibold text-[var(--ink)] mb-1"
+                    >
+                      Phone Number
+                    </label>
                     <input
                       id="vcard-phone"
                       type="tel"
@@ -332,7 +395,12 @@ export function InteractiveStudio() {
                     />
                   </div>
                   <div>
-                    <label htmlFor="vcard-email" className="block text-xs font-semibold text-[var(--ink)] mb-1">Email Address</label>
+                    <label
+                      htmlFor="vcard-email"
+                      className="block text-xs font-semibold text-[var(--ink)] mb-1"
+                    >
+                      Email Address
+                    </label>
                     <input
                       id="vcard-email"
                       type="email"
@@ -348,7 +416,12 @@ export function InteractiveStudio() {
               {activeFormat === "email" && (
                 <div className="space-y-3">
                   <div>
-                    <label htmlFor="email-to" className="block text-xs font-semibold text-[var(--ink)] mb-1">Recipient Email</label>
+                    <label
+                      htmlFor="email-to"
+                      className="block text-xs font-semibold text-[var(--ink)] mb-1"
+                    >
+                      Recipient Email
+                    </label>
                     <input
                       id="email-to"
                       type="email"
@@ -358,7 +431,12 @@ export function InteractiveStudio() {
                     />
                   </div>
                   <div>
-                    <label htmlFor="email-subject" className="block text-xs font-semibold text-[var(--ink)] mb-1">Pre-filled Subject</label>
+                    <label
+                      htmlFor="email-subject"
+                      className="block text-xs font-semibold text-[var(--ink)] mb-1"
+                    >
+                      Pre-filled Subject
+                    </label>
                     <input
                       id="email-subject"
                       type="text"
@@ -368,7 +446,12 @@ export function InteractiveStudio() {
                     />
                   </div>
                   <div>
-                    <label htmlFor="email-body" className="block text-xs font-semibold text-[var(--ink)] mb-1">Pre-filled Body Message</label>
+                    <label
+                      htmlFor="email-body"
+                      className="block text-xs font-semibold text-[var(--ink)] mb-1"
+                    >
+                      Pre-filled Body Message
+                    </label>
                     <textarea
                       id="email-body"
                       rows={2}
@@ -383,7 +466,10 @@ export function InteractiveStudio() {
               {/* Phone Input */}
               {activeFormat === "phone" && (
                 <div className="space-y-3">
-                  <label htmlFor="phone-input" className="block text-sm font-semibold text-[var(--ink)]">
+                  <label
+                    htmlFor="phone-input"
+                    className="block text-sm font-semibold text-[var(--ink)]"
+                  >
                     Dialer Phone Number
                   </label>
                   <input
@@ -395,7 +481,8 @@ export function InteractiveStudio() {
                     className="w-full px-4 py-3 bg-[var(--bg-surface)] border border-[var(--border-subtle)] rounded-2xl text-[var(--ink)] text-sm focus:outline-none focus:ring-2 focus:ring-[var(--plum)] focus:bg-white"
                   />
                   <p className="text-xs text-[var(--ink-muted)]">
-                    Opening the QR code triggers the native phone dialer with this number.
+                    Opening the QR code triggers the native phone dialer with
+                    this number.
                   </p>
                 </div>
               )}
@@ -403,7 +490,10 @@ export function InteractiveStudio() {
               {/* Plain Text Input */}
               {activeFormat === "text" && (
                 <div className="space-y-3">
-                  <label htmlFor="plain-text-input" className="block text-sm font-semibold text-[var(--ink)]">
+                  <label
+                    htmlFor="plain-text-input"
+                    className="block text-sm font-semibold text-[var(--ink)]"
+                  >
                     Raw Text or Voucher String
                   </label>
                   <textarea
@@ -430,19 +520,21 @@ export function InteractiveStudio() {
                   Module Shape Geometry
                 </label>
                 <div className="grid grid-cols-3 gap-2">
-                  {(["rounded", "dots", "square"] as ModuleShape[]).map((shape) => (
-                    <button
-                      key={shape}
-                      onClick={() => setModuleShape(shape)}
-                      className={`py-2 px-3 rounded-full text-xs capitalize transition-all select-none ${
-                        moduleShape === shape
-                          ? "bg-[var(--plum)] text-white font-semibold shadow-xs"
-                          : "bg-white/70 border border-[var(--border-subtle)] text-[var(--ink-muted)] hover:text-[var(--ink)] hover:bg-white"
-                      }`}
-                    >
-                      {shape}
-                    </button>
-                  ))}
+                  {(["rounded", "dots", "square"] as ModuleShape[]).map(
+                    (shape) => (
+                      <button
+                        key={shape}
+                        onClick={() => setModuleShape(shape)}
+                        className={`py-2 px-3 rounded-full text-xs capitalize transition-all select-none ${
+                          moduleShape === shape
+                            ? "bg-[var(--plum)] text-white font-semibold shadow-xs"
+                            : "bg-white/70 border border-[var(--border-subtle)] text-[var(--ink-muted)] hover:text-[var(--ink)] hover:bg-white"
+                        }`}
+                      >
+                        {shape}
+                      </button>
+                    ),
+                  )}
                 </div>
               </div>
 
@@ -452,19 +544,21 @@ export function InteractiveStudio() {
                   Eye / Finder Pattern Corners
                 </label>
                 <div className="grid grid-cols-3 gap-2">
-                  {(["rounded", "circle", "square"] as EyeStyle[]).map((eye) => (
-                    <button
-                      key={eye}
-                      onClick={() => setEyeStyle(eye)}
-                      className={`py-2 px-3 rounded-full text-xs capitalize transition-all select-none ${
-                        eyeStyle === eye
-                          ? "bg-[var(--plum)] text-white font-semibold shadow-xs"
-                          : "bg-white/70 border border-[var(--border-subtle)] text-[var(--ink-muted)] hover:text-[var(--ink)] hover:bg-white"
-                      }`}
-                    >
-                      {eye}
-                    </button>
-                  ))}
+                  {(["rounded", "circle", "square"] as EyeStyle[]).map(
+                    (eye) => (
+                      <button
+                        key={eye}
+                        onClick={() => setEyeStyle(eye)}
+                        className={`py-2 px-3 rounded-full text-xs capitalize transition-all select-none ${
+                          eyeStyle === eye
+                            ? "bg-[var(--plum)] text-white font-semibold shadow-xs"
+                            : "bg-white/70 border border-[var(--border-subtle)] text-[var(--ink-muted)] hover:text-[var(--ink)] hover:bg-white"
+                        }`}
+                      >
+                        {eye}
+                      </button>
+                    ),
+                  )}
                 </div>
               </div>
 
@@ -474,7 +568,9 @@ export function InteractiveStudio() {
                   Center Logo Badge (Level-H Protected)
                 </label>
                 <div className="grid grid-cols-5 gap-1.5">
-                  {(["none", "qrlab", "star", "heart", "shield"] as LogoPreset[]).map((l) => (
+                  {(
+                    ["none", "qrlab", "star", "heart", "shield"] as LogoPreset[]
+                  ).map((l) => (
                     <button
                       key={l}
                       onClick={() => setLogo(l)}
@@ -550,7 +646,9 @@ export function InteractiveStudio() {
                   {copied ? (
                     <>
                       <Check className="w-3.5 h-3.5 text-[var(--leaf)]" />
-                      <span className="text-[var(--leaf)] font-semibold">Copied!</span>
+                      <span className="text-[var(--leaf)] font-semibold">
+                        Copied!
+                      </span>
                     </>
                   ) : (
                     <>

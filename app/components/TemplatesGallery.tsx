@@ -1,5 +1,5 @@
 import { useState, useMemo } from "react";
-import { LayoutGrid, ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { TEMPLATES_DATA, TEMPLATE_CATEGORIES } from "../data/templates";
 import { generateQRSVGString } from "../utils/qr-generator";
 import { Button } from "./ui/Button";
@@ -13,7 +13,10 @@ export function TemplatesGallery() {
   }, [selectedCategory]);
 
   return (
-    <section id="templates" className="py-20 md:py-28 bg-[var(--bg-canvas)] border-t border-[var(--border-subtle)] relative scroll-mt-20">
+    <section
+      id="templates"
+      className="py-20 md:py-28 bg-[var(--bg-canvas)] border-t border-[var(--border-subtle)] relative scroll-mt-20"
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header with Morrow Signature Pattern */}
         <div className="text-center max-w-3xl mx-auto mb-14 space-y-3">
@@ -22,10 +25,13 @@ export function TemplatesGallery() {
           </p>
           <h2 className="h2-editorial font-bold text-[var(--ink)]">
             Ready-to-use, <br />
-            <span className="italic font-normal text-[var(--plum)]">thoughtful templates.</span>
+            <span className="italic font-normal text-[var(--plum)]">
+              thoughtful templates.
+            </span>
           </h2>
           <p className="text-base sm:text-lg text-[var(--ink-muted)] max-w-xl mx-auto leading-relaxed">
-            Kickstart your brand presence with layouts crafted for business cards, hospitality tables, design portfolios, and VIP passes.
+            Kickstart your brand presence with layouts crafted for business
+            cards, hospitality tables, design portfolios, and VIP passes.
           </p>
         </div>
 
@@ -99,7 +105,10 @@ export function TemplatesGallery() {
 
                 <div className="pt-4 mt-3 border-t border-[var(--border-subtle)] flex items-center justify-between">
                   <span className="text-[11px] font-medium text-[var(--ink-muted)]">
-                    Shape: <span className="capitalize text-[var(--ink)]">{template.moduleShape}</span>
+                    Shape:{" "}
+                    <span className="capitalize text-[var(--ink)]">
+                      {template.moduleShape}
+                    </span>
                   </span>
                   <Button
                     variant="secondary"
@@ -127,17 +136,14 @@ export function TemplatesGallery() {
               Browse 50+ Specialized Use-Case Presets
             </h3>
             <p className="text-sm text-[var(--ink-muted)] leading-relaxed">
-              Every template inside QRLab is completely editable. Modify contact cards,
-              Wi-Fi network keys, restaurant menus, and payment links with zero design skills.
+              Every template inside QRLab is completely editable. Modify contact
+              cards, Wi-Fi network keys, restaurant menus, and payment links
+              with zero design skills.
             </p>
           </div>
 
           <div className="flex items-center gap-4 flex-shrink-0">
-            <Button
-              variant="primary"
-              size="lg"
-              href="#download"
-            >
+            <Button variant="primary" size="lg" href="#download">
               Get Template Gallery in App
             </Button>
           </div>

@@ -1,5 +1,10 @@
-import { Globe, Wifi, Contact, Mail, ChevronRight, Sparkles } from "lucide-react";
-import { BotanicalBranch, LeafSpray, FloralSprig, CircularArrowButton } from "./icons";
+import { ChevronRight, Sparkles } from "lucide-react";
+import {
+  BotanicalBranch,
+  LeafSpray,
+  FloralSprig,
+  CircularArrowButton,
+} from "./icons";
 
 export function DataFormatsGrid() {
   const tiles = [
@@ -11,7 +16,9 @@ export function DataFormatsGrid() {
       bgColor: "bg-[var(--lavender)]",
       textColor: "text-[var(--ink)]",
       mutedColor: "text-[#3E373B]", // WCAG AA compliant on lavender
-      illustration: <BotanicalBranch className="w-24 h-24 sm:w-28 sm:h-28 text-[var(--plum)]" />,
+      illustration: (
+        <BotanicalBranch className="w-24 h-24 sm:w-28 sm:h-28 text-[var(--plum)]" />
+      ),
       hash: "#studio",
     },
     {
@@ -22,7 +29,9 @@ export function DataFormatsGrid() {
       bgColor: "bg-[var(--sage)]",
       textColor: "text-[var(--ink)]",
       mutedColor: "text-[#313C2C]", // WCAG AA compliant on sage
-      illustration: <LeafSpray className="w-24 h-24 sm:w-28 sm:h-28 text-[var(--leaf)]" />,
+      illustration: (
+        <LeafSpray className="w-24 h-24 sm:w-28 sm:h-28 text-[var(--leaf)]" />
+      ),
       hash: "#studio",
     },
     {
@@ -44,7 +53,9 @@ export function DataFormatsGrid() {
       bgColor: "bg-[var(--peach)]",
       textColor: "text-[var(--ink)]",
       mutedColor: "text-[#472D24]", // WCAG AA compliant on peach
-      illustration: <BotanicalBranch className="w-24 h-24 sm:w-28 sm:h-28 text-[#9E4A35] -scale-x-100" />,
+      illustration: (
+        <BotanicalBranch className="w-24 h-24 sm:w-28 sm:h-28 text-[#9E4A35] -scale-x-100" />
+      ),
       hash: "#studio",
     },
   ];
@@ -60,10 +71,13 @@ export function DataFormatsGrid() {
           </p>
           <h2 className="h2-editorial font-bold text-[var(--ink)]">
             One creator, <br />
-            <span className="italic font-normal text-[var(--plum)]">every connection.</span>
+            <span className="italic font-normal text-[var(--plum)]">
+              every connection.
+            </span>
           </h2>
           <p className="text-base sm:text-lg text-[var(--ink-muted)] max-w-xl mx-auto leading-relaxed">
-            Choose from versatile data formats engineered for maximum scannability and zero friction.
+            Choose from versatile data formats engineered for maximum
+            scannability and zero friction.
           </p>
         </div>
 
@@ -83,7 +97,9 @@ export function DataFormatsGrid() {
                 <h3 className="font-serif text-2xl sm:text-3xl font-bold text-[var(--ink)] leading-snug">
                   {tile.title}
                 </h3>
-                <p className={`text-sm sm:text-base ${tile.mutedColor} leading-relaxed pt-1`}>
+                <p
+                  className={`text-sm sm:text-base ${tile.mutedColor} leading-relaxed pt-1`}
+                >
                   {tile.desc}
                 </p>
               </div>
@@ -118,7 +134,8 @@ export function DataFormatsGrid() {
                     Not sure where to start?
                   </h4>
                   <p className="text-xs sm:text-sm text-[var(--ink-muted)]">
-                    Explore curated designer blueprints and get instant scannable presets.
+                    Explore curated designer blueprints and get instant
+                    scannable presets.
                   </p>
                 </div>
               </div>

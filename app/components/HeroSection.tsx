@@ -1,5 +1,5 @@
 import { useState, useMemo } from "react";
-import { Sparkles, ArrowDown, ShieldCheck, CheckCircle2 } from "lucide-react";
+import { ArrowDown, CheckCircle2 } from "lucide-react";
 import { THEME_PRESETS } from "../data/theme-presets";
 import { generateQRSVGString } from "../utils/qr-generator";
 import type { ModuleShape, EyeStyle, LogoPreset } from "../utils/qr-generator";

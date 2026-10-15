@@ -1,6 +1,4 @@
-import { useState } from "react";
-import { Sliders, Eye, Palette, Award, Layers, ChevronRight } from "lucide-react";
-import { BotanicalBranch, LeafSpray } from "./icons";
+import { Eye, Palette, Award, Layers, ChevronRight } from "lucide-react";
 
 export function CustomizationShowcase() {
   const customizationFeatures = [
@@ -39,7 +37,10 @@ export function CustomizationShowcase() {
   ];
 
   return (
-    <section id="customization" className="py-20 md:py-28 relative scroll-mt-24">
+    <section
+      id="customization"
+      className="py-20 md:py-28 relative scroll-mt-24"
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header with Morrow Signature Pattern */}
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
@@ -48,10 +49,13 @@ export function CustomizationShowcase() {
           </p>
           <h2 className="h2-editorial font-bold text-[var(--ink)]">
             Craft your brand, <br />
-            <span className="italic font-normal text-[var(--plum)]">in every millimeter.</span>
+            <span className="italic font-normal text-[var(--plum)]">
+              in every millimeter.
+            </span>
           </h2>
           <p className="text-base sm:text-lg text-[var(--ink-muted)] max-w-xl mx-auto leading-relaxed">
-            Never settle for plain black squares again. Customize modules, corner finders, and logos to harmoniously match your identity.
+            Never settle for plain black squares again. Customize modules,
+            corner finders, and logos to harmoniously match your identity.
           </p>
         </div>
 
@@ -69,7 +73,9 @@ export function CustomizationShowcase() {
                   <div className="flex items-start justify-between gap-4">
                     <div className="flex items-start gap-4">
                       {/* Pastel Rounded Square Icon */}
-                      <div className={`p-3 rounded-2xl ${feat.pastel} text-[var(--ink)] flex-shrink-0 group-hover:scale-105 transition-transform`}>
+                      <div
+                        className={`p-3 rounded-2xl ${feat.pastel} text-[var(--ink)] flex-shrink-0 group-hover:scale-105 transition-transform`}
+                      >
                         <Icon className="w-5 h-5 text-[var(--plum)]" />
                       </div>
 
