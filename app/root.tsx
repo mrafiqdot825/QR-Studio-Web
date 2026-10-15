@@ -19,7 +19,7 @@ export const links: Route.LinksFunction = () => [
   },
   {
     rel: "stylesheet",
-    href: "https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&display=swap",
+    href: "https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400..700;1,9..40,400..700&family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..700&display=swap",
   },
   {
     rel: "icon",
@@ -38,11 +38,11 @@ export function Layout({ children }: { children: React.ReactNode }) {
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="theme-color" content="#3E6FA6" />
+        <meta name="theme-color" content="#FBEDE6" />
         <Meta />
         <Links />
       </head>
-      <body className="min-h-screen bg-[#F4F8FC] text-[#0E1B2A] antialiased">
+      <body className="min-h-screen bg-[#FBEDE6] text-[#1A1416] antialiased selection:bg-[#4A0F3A] selection:text-white">
         {children}
         <ScrollRestoration />
         <Scripts />
@@ -61,7 +61,7 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
   let stack: string | undefined;
 
   if (isRouteErrorResponse(error)) {
-    message = error.status === 404 ? "404 - Page Not Found" : "Error";
+    message = error.status === 404 ? "Page Not Found" : "Error";
     details =
       error.status === 404
         ? "The requested page could not be found."
@@ -72,18 +72,32 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
   }
 
   return (
-    <main className="min-h-screen flex items-center justify-center p-6 bg-[#F4F8FC]">
-      <div className="max-w-md w-full bg-white p-8 rounded-3xl border border-slate-200 shadow-xl text-center">
-        <h1 className="text-3xl font-bold text-[#0E1B2A] mb-2">{message}</h1>
-        <p className="text-slate-600 mb-6">{details}</p>
+    <main className="min-h-screen flex items-center justify-center p-6 bg-[#FBEDE6]">
+      <div className="max-w-md w-full bg-white p-8 sm:p-10 rounded-[32px] border border-[#F0E2DA] shadow-[0_12px_32px_rgba(74,15,58,0.07)] text-center">
+        <span className="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-[#D9D4F5] text-[#1A1416] mb-4">
+          QRLab Notice
+        </span>
+        <h1 className="font-serif text-3xl sm:text-4xl font-bold text-[#1A1416] mb-2 leading-tight">
+          {message === "Page Not Found" ? (
+            <>
+              Page not found, <br />
+              <span className="italic font-normal text-[#4A0F3A]">take a breath.</span>
+            </>
+          ) : (
+            message
+          )}
+        </h1>
+        <p className="text-[#6B6468] text-sm sm:text-base mb-6 leading-relaxed">
+          {details}
+        </p>
         <a
           href="/"
-          className="inline-flex items-center justify-center px-6 py-3 rounded-xl bg-[#3E6FA6] text-white font-medium hover:bg-[#2C527D] transition shadow-md"
+          className="inline-flex items-center justify-center px-6 py-3 rounded-full bg-[#4A0F3A] hover:bg-[#5C1349] text-white font-medium transition-all shadow-[0_4px_14px_rgba(74,15,58,0.15)] active:scale-95"
         >
           Return to Home
         </a>
         {stack && (
-          <pre className="mt-6 text-left p-4 bg-slate-50 rounded-xl text-xs overflow-x-auto text-slate-800">
+          <pre className="mt-6 text-left p-4 bg-[#FDF6F2] rounded-2xl text-xs overflow-x-auto text-[#1A1416] border border-[#F0E2DA]">
             <code>{stack}</code>
           </pre>
         )}

@@ -1,13 +1,19 @@
 import { useState, useEffect } from "react";
-import { QrCode, Search, Menu, X } from "lucide-react";
-import { GithubIcon } from "./icons";
+import {
+  QrCode,
+  Menu,
+  X,
+  Home,
+  Compass,
+  Layers,
+  Smartphone,
+} from "lucide-react";
 
 export function Navbar() {
   const [activeTab, setActiveTab] = useState("Overview");
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
-  // Streamlined 5 links matching the reference image layout (Overview, Features, Studio, Templates, FAQ)
   const navLinks = [
     { label: "Overview", href: "#" },
     { label: "Features", href: "#features" },
@@ -16,30 +22,57 @@ export function Navbar() {
     { label: "FAQ", href: "#faq" },
   ];
 
-  // Full links for mobile dropdown
   const allMobileLinks = [
     { label: "Overview", href: "#" },
     { label: "Features", href: "#features" },
-    { label: "Studio", href: "#studio" },
+    { label: "Live Studio", href: "#studio" },
     { label: "Customization", href: "#customization" },
     { label: "Templates", href: "#templates" },
-    { label: "Vector Quality", href: "#vector-quality" },
+    { label: "Print & Vector", href: "#vector-quality" },
     { label: "Privacy", href: "#privacy" },
     { label: "FAQ", href: "#faq" },
   ];
 
+  const handleNavClick = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    href: string,
+    label: string,
+  ) => {
+    e.preventDefault();
+    setActiveTab(label);
+    if (mobileMenuOpen) setMobileMenuOpen(false);
+
+    if (href === "#" || href === "") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      if (window.location.hash) {
+        window.history.pushState(null, "", window.location.pathname);
+      }
+      return;
+    }
+
+    const targetId = href.replace(/^#/, "");
+    const targetElement = document.getElementById(targetId);
+    if (targetElement) {
+      targetElement.scrollIntoView({ behavior: "smooth", block: "start" });
+      window.history.pushState(null, "", href);
+    }
+  };
+
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 15);
+      setIsScrolled(window.scrollY > 20);
 
+      // Bottom-to-top evaluation matching the DOM order in home.tsx
       const sections = [
+        { id: "download", name: "Download" },
         { id: "faq", name: "FAQ" },
         { id: "templates", name: "Templates" },
         { id: "studio", name: "Studio" },
+        { id: "customization", name: "Features" },
         { id: "features", name: "Features" },
       ];
 
-      const scrollPos = window.scrollY + 160;
+      const scrollPos = window.scrollY + 180;
       for (const section of sections) {
         const el = document.getElementById(section.id);
         if (el && el.offsetTop <= scrollPos) {
@@ -52,142 +85,201 @@ export function Navbar() {
       }
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 pt-3 sm:pt-4 px-3 sm:px-6 pointer-events-none">
-      <div className="max-w-6xl mx-auto pointer-events-auto">
-        {/* Neumorphic Capsule Shell */}
-        <div className="neu-navbar-shell rounded-full px-3.5 sm:px-5 py-2 sm:py-2.5 flex items-center justify-between transition-all duration-300">
-          
-          {/* 1. Left: Brand Icon Disc & Name (matching reference image) */}
-          <a href="#" className="flex items-center gap-2.5 sm:gap-3 group select-none shrink-0">
-            {/* Raised circular disc with QR Code and coral dot */}
-            <div className="relative w-9 h-9 sm:w-10 sm:h-10 rounded-full neu-circle-btn flex items-center justify-center shrink-0 transition-transform group-hover:scale-105">
-              {/* QR Code Graphic */}
-              <QrCode className="w-4.5 h-4.5 sm:w-5 sm:h-5 text-slate-800 transition-colors group-hover:text-[#3E6FA6]" />
-              
-              {/* Glowing Coral Dot Accent */}
-              <span className="absolute top-1 right-1 w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-gradient-to-br from-[#FF6B4A] to-[#FF4B26] shadow-[0_0_6px_rgba(255,75,38,0.85)] ring-1.5 ring-[#EBEDF2] group-hover:scale-110 transition-transform" />
-            </div>
-            
-            <div className="flex items-center gap-1.5 sm:gap-2">
-              <span className="font-extrabold text-base sm:text-xl tracking-tight text-[#0E1B2A] font-heading">
-                QR Studio
-              </span>
-              <span className="hidden xl:inline-flex items-center px-1.5 py-0.5 rounded-full text-[9px] font-semibold bg-[#DEE3E9] text-[#3E6FA6] border border-white/60">
-                v2.0
-              </span>
-            </div>
-          </a>
-
-          {/* 2. Center: Recessed / Debossed Inset Trough (all 5 items fit 100% inside with zero overflow) */}
-          <nav className="hidden lg:flex items-center justify-center neu-inset-track rounded-full p-1 gap-1 shrink-0 overflow-hidden">
-            {navLinks.map((link) => {
-              const isActive = activeTab === link.label;
-              return (
-                <a
-                  key={link.label}
-                  href={link.href}
-                  onClick={() => setActiveTab(link.label)}
-                  className={`text-xs xl:text-sm whitespace-nowrap shrink-0 transition-all duration-200 select-none ${
-                    isActive
-                      ? "neu-pill-active rounded-full px-4 xl:px-5 py-1.5 font-bold text-[#0E1B2A]"
-                      : "px-3 xl:px-3.5 py-1.5 rounded-full font-medium text-slate-500 hover:text-slate-800 hover:bg-white/30"
-                  }`}
-                >
-                  {link.label}
-                </a>
-              );
-            })}
-          </nav>
-
-          {/* 3. Right: Neumorphic Action Elements */}
-          <div className="flex items-center gap-2 sm:gap-3 shrink-0">
-            {/* Search circular button */}
+    <>
+      <header className="fixed top-0 left-0 right-0 z-50 pt-3 sm:pt-4 px-3 sm:px-6 pointer-events-none">
+        <div className="max-w-6xl mx-auto pointer-events-auto">
+          {/* Morrow Translucent Editorial Floating Capsule */}
+          <div className="editorial-glass-nav rounded-full px-4 sm:px-6 py-2.5 sm:py-3 flex items-center justify-between transition-all duration-300">
+            {/* 1. Left: Serif Wordmark & Warm Brand Pill */}
             <a
-              href="#studio"
-              className="w-9 h-9 sm:w-10 sm:h-10 rounded-full neu-circle-btn flex items-center justify-center text-slate-700 hover:text-slate-950"
-              aria-label="Live Studio Search"
-              title="Jump to Interactive Studio"
+              href="#"
+              onClick={(e) => handleNavClick(e, "#", "Overview")}
+              className="flex items-center gap-2.5 sm:gap-3 group select-none shrink-0"
             >
-              <Search className="w-4 h-4" />
+              <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-2xl bg-[var(--plum)] flex items-center justify-center p-1.5 shadow-xs border border-[var(--plum-hover)] shrink-0 transition-transform group-hover:scale-105">
+                <img
+                  src="/assets/images/navbar-logo.png"
+                  alt="QRLab Logo"
+                  className="w-full h-full object-contain"
+                />
+              </div>
+
+              <div className="flex items-center gap-2">
+                <span className="font-serif text-lg sm:text-2xl font-bold tracking-tight text-[var(--ink)]">
+                  QRLab
+                </span>
+                <span className="hidden sm:inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-semibold bg-[var(--plum-light)] text-[var(--plum)]">
+                  v3.0
+                </span>
+              </div>
             </a>
 
-            {/* GitHub circular button */}
-            <a
-              href="https://github.com/mrafiqdot825/QR-Studio"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-9 h-9 sm:w-10 sm:h-10 rounded-full neu-circle-btn flex items-center justify-center text-slate-700 hover:text-slate-950"
-              aria-label="GitHub Repository"
-              title="GitHub Repository"
-            >
-              <GithubIcon className="w-4 h-4" />
-            </a>
-
-            {/* "Get Started" Neumorphic Pill Button with Cyan Indicator Dot */}
-            <a
-              href="#download"
-              className="neu-pill-btn rounded-full px-3.5 sm:px-5 py-2 sm:py-2.5 flex items-center gap-2 sm:gap-2.5 text-xs sm:text-sm font-bold text-[#0E1B2A] select-none shrink-0"
-            >
-              {/* Electric Cyan Glowing Dot from reference */}
-              <span className="w-2 h-2 rounded-full bg-[#00D2FF] shadow-[0_0_8px_#00D2FF] shrink-0 animate-pulse" />
-              <span className="whitespace-nowrap">Get Started</span>
-            </a>
-
-            {/* Mobile Menu Hamburger (Visible on small screens) */}
-            <button
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="lg:hidden w-9 h-9 sm:w-10 sm:h-10 rounded-full neu-circle-btn flex items-center justify-center text-slate-700 hover:text-slate-950 ml-1"
-              aria-label="Toggle navigation"
-            >
-              {mobileMenuOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
-            </button>
-          </div>
-        </div>
-
-        {/* Mobile Dropdown Menu (Neumorphic) */}
-        {mobileMenuOpen && (
-          <div className="lg:hidden mt-3 neu-navbar-shell rounded-3xl p-4 animate-in fade-in slide-in-from-top-3">
-            <div className="neu-inset-track rounded-2xl p-2 space-y-1">
-              {allMobileLinks.map((link) => {
+            {/* 2. Center: Rounded Floating Nav Links */}
+            <nav className="hidden lg:flex items-center justify-center bg-white/70 border border-[var(--border-subtle)] rounded-full p-1 gap-1 shrink-0 shadow-xs">
+              {navLinks.map((link) => {
                 const isActive = activeTab === link.label;
                 return (
                   <a
                     key={link.label}
                     href={link.href}
-                    onClick={() => {
-                      setActiveTab(link.label);
-                      setMobileMenuOpen(false);
-                    }}
-                    className={`block px-4 py-2.5 rounded-xl text-sm transition-all ${
+                    onClick={(e) => handleNavClick(e, link.href, link.label)}
+                    className={`text-xs xl:text-sm whitespace-nowrap shrink-0 transition-all duration-200 select-none rounded-full px-4 xl:px-5 py-1.5 font-medium ${
                       isActive
-                        ? "neu-pill-active font-bold text-[#0E1B2A]"
-                        : "text-slate-600 font-medium hover:text-slate-900"
+                        ? "bg-[var(--plum)] text-white shadow-xs font-semibold"
+                        : "text-[var(--ink-muted)] hover:text-[var(--ink)] hover:bg-[var(--bg-surface)]"
                     }`}
                   >
                     {link.label}
                   </a>
                 );
               })}
-            </div>
+            </nav>
 
-            <div className="mt-3 pt-3 border-t border-slate-200/50 flex flex-col gap-2">
+            {/* 3. Right: Action Button (Download App) */}
+            <div className="flex items-center gap-2 sm:gap-3 shrink-0">
+              {/* Primary Download App Plum Pill Button */}
               <a
                 href="#download"
-                onClick={() => setMobileMenuOpen(false)}
-                className="neu-pill-btn rounded-xl py-3 flex items-center justify-center gap-2 font-bold text-sm text-[#0E1B2A]"
+                onClick={(e) => handleNavClick(e, "#download", "Download")}
+                className="rounded-full px-4 sm:px-6 py-2 sm:py-2.5 flex items-center gap-2 text-xs sm:text-sm font-semibold bg-[var(--plum)] hover:bg-[var(--plum-hover)] text-white shadow-[0_4px_16px_rgba(74,15,58,0.2)] transition-all duration-200 active:scale-95"
               >
-                <span className="w-2 h-2 rounded-full bg-[#00D2FF] shadow-[0_0_8px_#00D2FF]" />
-                <span>Get App on Google Play</span>
+                <Smartphone className="w-4 h-4 text-[var(--butter)]" />
+                <span className="whitespace-nowrap">Download App</span>
               </a>
+
+              {/* Mobile Hamburger Toggle */}
+              <button
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                className="lg:hidden w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[var(--bg-surface)] border border-[var(--border-subtle)] shadow-xs flex items-center justify-center text-[var(--ink)] hover:bg-[var(--bg-canvas)] ml-1 transition-all"
+                aria-label="Toggle navigation"
+              >
+                {mobileMenuOpen ? (
+                  <X className="w-4 h-4" />
+                ) : (
+                  <Menu className="w-4 h-4" />
+                )}
+              </button>
             </div>
           </div>
-        )}
-      </div>
-    </header>
+
+          {/* Mobile Sheet Dropdown */}
+          {mobileMenuOpen && (
+            <div className="lg:hidden mt-3 bg-[var(--bg-surface)]/95 backdrop-blur-xl rounded-[28px] p-5 border border-[var(--border-subtle)] shadow-[0_16px_36px_rgba(74,15,58,0.12)] animate-in fade-in slide-in-from-top-3">
+              <div className="space-y-1">
+                {allMobileLinks.map((link) => {
+                  const isActive = activeTab === link.label;
+                  return (
+                    <a
+                      key={link.label}
+                      href={link.href}
+                      onClick={(e) => handleNavClick(e, link.href, link.label)}
+                      className={`block px-4 py-2.5 rounded-2xl text-sm transition-all ${
+                        isActive
+                          ? "bg-[var(--plum)] text-white font-semibold shadow-xs"
+                          : "text-[var(--ink-muted)] font-medium hover:text-[var(--ink)] hover:bg-[var(--bg-surface)]"
+                      }`}
+                    >
+                      {link.label}
+                    </a>
+                  );
+                })}
+              </div>
+
+              <div className="mt-4 pt-4 border-t border-[var(--border-subtle)] flex flex-col gap-2">
+                <a
+                  href="#download"
+                  onClick={(e) => handleNavClick(e, "#download", "Download")}
+                  className="rounded-full py-3 flex items-center justify-center gap-2 font-semibold text-sm bg-[var(--plum)] text-white shadow-md active:scale-98 transition-all"
+                >
+                  <Smartphone className="w-4 h-4 text-[var(--butter)]" />
+                  <span>Download for Android</span>
+                </a>
+              </div>
+            </div>
+          )}
+        </div>
+      </header>
+
+      {/* Floating Bottom Tab Bar on Mobile */}
+      <nav
+        aria-label="Mobile Bottom Navigation"
+        className="lg:hidden fixed bottom-3 left-1/2 -translate-x-1/2 z-40 w-[calc(100%-24px)] max-w-sm bg-white/90 backdrop-blur-xl rounded-full px-3 py-2 border border-[var(--border-subtle)] shadow-[0_10px_30px_rgba(74,15,58,0.12)] flex items-center justify-around"
+      >
+        <a
+          href="#"
+          onClick={(e) => handleNavClick(e, "#", "Overview")}
+          className={`flex flex-col items-center justify-center transition-all ${
+            activeTab === "Overview"
+              ? "w-14 h-12 rounded-2xl bg-[var(--plum)] text-white shadow-xs"
+              : "w-12 h-12 text-[var(--ink-muted)] hover:text-[var(--ink)]"
+          }`}
+          aria-label="Home"
+        >
+          <Home className="w-4 h-4" />
+          <span className="text-[10px] font-medium mt-0.5">Home</span>
+        </a>
+
+        <a
+          href="#features"
+          onClick={(e) => handleNavClick(e, "#features", "Features")}
+          className={`flex flex-col items-center justify-center transition-all ${
+            activeTab === "Features"
+              ? "w-14 h-12 rounded-2xl bg-[var(--plum)] text-white shadow-xs"
+              : "w-12 h-12 text-[var(--ink-muted)] hover:text-[var(--ink)]"
+          }`}
+          aria-label="Features"
+        >
+          <Layers className="w-4 h-4" />
+          <span className="text-[10px] font-medium mt-0.5">Features</span>
+        </a>
+
+        <a
+          href="#studio"
+          onClick={(e) => handleNavClick(e, "#studio", "Studio")}
+          className={`flex flex-col items-center justify-center transition-all ${
+            activeTab === "Studio"
+              ? "w-14 h-12 rounded-2xl bg-[var(--plum)] text-white shadow-xs"
+              : "w-12 h-12 text-[var(--ink-muted)] hover:text-[var(--ink)]"
+          }`}
+          aria-label="Studio"
+        >
+          <Compass className="w-4 h-4" />
+          <span className="text-[10px] font-medium mt-0.5">Studio</span>
+        </a>
+
+        <a
+          href="#templates"
+          onClick={(e) => handleNavClick(e, "#templates", "Templates")}
+          className={`flex flex-col items-center justify-center transition-all ${
+            activeTab === "Templates"
+              ? "w-14 h-12 rounded-2xl bg-[var(--plum)] text-white shadow-xs"
+              : "w-12 h-12 text-[var(--ink-muted)] hover:text-[var(--ink)]"
+          }`}
+          aria-label="Templates"
+        >
+          <Layers className="w-4 h-4" />
+          <span className="text-[10px] font-medium mt-0.5">Templates</span>
+        </a>
+
+        <a
+          href="#download"
+          onClick={(e) => handleNavClick(e, "#download", "Download")}
+          className={`flex flex-col items-center justify-center transition-all ${
+            activeTab === "Download"
+              ? "w-14 h-12 rounded-2xl bg-[var(--plum)] text-white shadow-xs"
+              : "w-12 h-12 text-[var(--ink-muted)] hover:text-[var(--ink)]"
+          }`}
+          aria-label="Get App"
+        >
+          <Smartphone className="w-4 h-4" />
+          <span className="text-[10px] font-medium mt-0.5">App</span>
+        </a>
+      </nav>
+    </>
   );
 }

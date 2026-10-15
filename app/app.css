@@ -1,210 +1,156 @@
 @import "tailwindcss";
 
-@theme {
-  --font-sans: "Plus Jakarta Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-heading: "Outfit", "Plus Jakarta Sans", sans-serif;
-  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+:root {
+  /* Step 1 — Morrow-style Design Tokens */
+  --bg-canvas: #FBEDE6;
+  --bg-surface: #FDF6F2;
+  --bg-card: #FFFFFF;
+  --ink: #1A1416;
+  --ink-muted: #6B6468;
+  --plum: #4A0F3A;
+  --plum-hover: #5C1349;
+  --plum-light: #F7EBF3;
+  --sage: #C9D8BE;
+  --sage-light: #EEF4EA;
+  --butter: #FBE9A8;
+  --butter-light: #FEF9E7;
+  --peach: #F7B9A5;
+  --peach-light: #FDEEE9;
+  --lavender: #D9D4F5;
+  --lavender-light: #F3F1FC;
+  --periwinkle: #AFC0F5;
+  --periwinkle-light: #EBF0FD;
+  --leaf: #8FA67F;
+  --border-subtle: #F0E2DA;
+}
 
-  --color-canvas: #F4F8FC;
-  --color-canvas-alt: #F0F8FF;
-  --color-surface: #FFFFFF;
-  --color-surface-subtle: #EBF3FC;
-  --color-navy: #0E1B2A;
-  --color-navy-light: #162C44;
-  --color-steel: #3E6FA6;
-  --color-steel-dark: #2A5280;
-  --color-indigo-brand: #635BFF;
-  --color-muted: #5A6A7D;
-  --color-border-card: #E2E8F0;
+@theme {
+  --font-serif: "Newsreader", Georgia, Cambria, "Times New Roman", Times, serif;
+  --font-sans: "DM Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-heading: "Newsreader", Georgia, serif;
+
+  --color-canvas: var(--bg-canvas);
+  --color-surface: var(--bg-surface);
+  --color-card: var(--bg-card);
+  --color-ink: var(--ink);
+  --color-ink-muted: var(--ink-muted);
+  --color-plum: var(--plum);
+  --color-plum-hover: var(--plum-hover);
+  --color-plum-light: var(--plum-light);
+  --color-sage: var(--sage);
+  --color-sage-light: var(--sage-light);
+  --color-butter: var(--butter);
+  --color-butter-light: var(--butter-light);
+  --color-peach: var(--peach);
+  --color-peach-light: var(--peach-light);
+  --color-lavender: var(--lavender);
+  --color-lavender-light: var(--lavender-light);
+  --color-periwinkle: var(--periwinkle);
+  --color-periwinkle-light: var(--periwinkle-light);
+  --color-leaf: var(--leaf);
+  --color-border-subtle: var(--border-subtle);
 }
 
 html {
   scroll-behavior: smooth;
-  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  background-color: var(--bg-canvas);
+  color: var(--ink);
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-canvas);
+  color: var(--ink);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
 }
 
 h1,
 h2,
 h3,
 h4,
-h5,
-h6 {
-  font-family: var(--font-heading);
-  letter-spacing: -0.025em;
+.font-editorial {
+  font-family: var(--font-serif);
+  letter-spacing: -0.015em;
 }
 
-body,
-button,
-input,
-select,
-textarea {
-  font-family: var(--font-sans);
+/* Fluid Typography Utilities */
+.h1-editorial {
+  font-family: var(--font-serif);
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  line-height: 1.08;
+  letter-spacing: -0.02em;
 }
 
-body {
-  background-color: #F4F8FC;
-  color: #0E1B2A;
-  overflow-x: hidden;
-  -webkit-font-smoothing: antialiased;
+.h2-editorial {
+  font-family: var(--font-serif);
+  font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+  line-height: 1.15;
+  letter-spacing: -0.015em;
 }
 
-/* Glassmorphism helpers */
-.glass-nav {
-  background: rgba(255, 255, 255, 0.85);
+/* Morrow Soft Diffuse Shadows */
+.shadow-editorial-sm {
+  box-shadow: 0 4px 16px rgba(74, 15, 58, 0.04), 0 1px 3px rgba(74, 15, 58, 0.02);
+}
+
+.shadow-editorial {
+  box-shadow: 0 12px 32px rgba(74, 15, 58, 0.07), 0 2px 6px rgba(74, 15, 58, 0.02);
+}
+
+.shadow-editorial-lg {
+  box-shadow: 0 20px 48px rgba(74, 15, 58, 0.09), 0 4px 12px rgba(74, 15, 58, 0.03);
+}
+
+.shadow-editorial-hover {
+  transition: transform 0.25s ease-out, box-shadow 0.25s ease-out;
+}
+
+.shadow-editorial-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 44px rgba(74, 15, 58, 0.11), 0 6px 14px rgba(74, 15, 58, 0.04);
+}
+
+/* Translucent Editorial Header */
+.editorial-glass-nav {
+  background: rgba(253, 246, 242, 0.88);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+  border: 1px solid var(--border-subtle);
+  box-shadow: 0 8px 30px rgba(74, 15, 58, 0.05);
 }
 
-.glass-card {
-  background: #FFFFFF;
-  border: 1px solid #E2E8F0;
-  box-shadow: 0 10px 30px -10px rgba(14, 27, 42, 0.05), 0 2px 6px -2px rgba(14, 27, 42, 0.02);
+/* Morrow Active Pill */
+.plum-pill-active {
+  background-color: var(--plum);
+  color: #FFFFFF;
+  box-shadow: 0 4px 14px rgba(74, 15, 58, 0.25);
 }
 
-.glass-card-interactive {
-  background: #FFFFFF;
-  border: 1px solid #E2E8F0;
-  box-shadow: 0 10px 30px -10px rgba(14, 27, 42, 0.06);
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.glass-card-interactive:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 20px 40px -12px rgba(62, 111, 166, 0.15), 0 4px 12px -2px rgba(14, 27, 42, 0.04);
-  border-color: #CBD5E1;
-}
-
-/* Gradient accents */
-.gradient-text {
-  background: linear-gradient(135deg, #0E1B2A 0%, #3E6FA6 60%, #635BFF 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.gradient-brand {
-  background: linear-gradient(135deg, #3E6FA6 0%, #635BFF 100%);
-}
-
-.gradient-gold {
-  background: linear-gradient(135deg, #B45309 0%, #D97706 100%);
-}
-
-.badge-pill {
-  background: #EBF3FC;
-  border: 1px solid #D0E2F5;
-  color: #2C527D;
-}
-
-/* Modern tactile button classes */
-.btn-highlight {
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18), 0 2px 4px rgba(14, 27, 42, 0.08);
-}
-
-.btn-highlight-light {
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8), 0 1px 3px rgba(14, 27, 42, 0.05);
-}
-
-.btn-press:active {
-  transform: scale(0.98);
-}
-
-/* Segmented control pill active state */
-.segmented-pill-active {
-  background: #FFFFFF;
-  color: #0E1B2A;
-  box-shadow: 0 1px 3px rgba(14, 27, 42, 0.08), 0 1px 2px rgba(14, 27, 42, 0.04);
-}
-
-/* --- Neumorphism Styles (Reference Spec) --- */
-.neu-navbar-shell {
-  background: #EBEDF2;
-  box-shadow: 
-    0 12px 32px -4px rgba(148, 163, 184, 0.3),
-    4px 5px 12px rgba(160, 172, 186, 0.4),
-    -4px -5px 12px rgba(255, 255, 255, 0.95);
-  border: 1px solid rgba(255, 255, 255, 0.75);
-}
-
-.neu-inset-track {
-  background: #E1E5EB;
-  box-shadow: 
-    inset 2.5px 2.5px 5px rgba(160, 172, 186, 0.5),
-    inset -2.5px -2.5px 5px rgba(255, 255, 255, 0.95);
-  border: 1px solid rgba(203, 213, 225, 0.35);
-}
-
-.neu-pill-active {
-  background: #EBEDF2;
-  box-shadow: 
-    2px 2.5px 5px rgba(160, 172, 186, 0.45),
-    -2px -2.5px 5px rgba(255, 255, 255, 0.95);
-  color: #0E1B2A;
-}
-
-.neu-circle-btn {
-  background: #EBEDF2;
-  box-shadow: 
-    2.5px 2.5px 6px rgba(160, 172, 186, 0.45),
-    -2.5px -2.5px 6px rgba(255, 255, 255, 0.95);
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.neu-circle-btn:hover {
-  transform: translateY(-1px);
-  box-shadow: 
-    3.5px 3.5px 8px rgba(160, 172, 186, 0.5),
-    -3.5px -3.5px 8px rgba(255, 255, 255, 1);
-}
-
-.neu-circle-btn:active {
-  transform: translateY(0);
-  box-shadow: 
-    inset 2px 2px 4px rgba(160, 172, 186, 0.55),
-    inset -2px -2px 4px rgba(255, 255, 255, 0.9);
-}
-
-.neu-pill-btn {
-  background: #EBEDF2;
-  box-shadow: 
-    3px 3px 7px rgba(160, 172, 186, 0.45),
-    -3px -3px 7px rgba(255, 255, 255, 0.95);
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.neu-pill-btn:hover {
-  transform: translateY(-1px);
-  box-shadow: 
-    4px 4px 10px rgba(160, 172, 186, 0.5),
-    -4px -4px 10px rgba(255, 255, 255, 1);
-}
-
-.neu-pill-btn:active {
-  transform: translateY(0);
-  box-shadow: 
-    inset 2px 2px 4px rgba(160, 172, 186, 0.55),
-    inset -2px -2px 4px rgba(255, 255, 255, 0.9);
-}
-
-
-/* Custom phone frame styling */
-.phone-mockup-frame {
-  box-shadow: 0 25px 60px -15px rgba(14, 27, 42, 0.25), 0 0 0 10px #1E293B, 0 0 0 12px #94A3B8;
-  border-radius: 44px;
-}
-
-/* Smooth custom scrollbars */
+/* Smooth custom scrollbars in warm palette */
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #F1F5F9;
+  background: var(--bg-canvas);
 }
 ::-webkit-scrollbar-thumb {
-  background: #CBD5E1;
+  background: #E4D5CE;
   border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #94A3B8;
+  background: #CCA89C;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

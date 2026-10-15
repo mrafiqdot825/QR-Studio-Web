@@ -11,12 +11,10 @@ import {
   Check,
   Sparkles,
   Sliders,
-  Layers,
   Palette,
   Eye,
-  Shield,
-  Smartphone,
-  ExternalLink,
+  ShieldCheck,
+  CheckCircle2,
 } from "lucide-react";
 import { THEME_PRESETS } from "../data/theme-presets";
 import type { ThemePreset } from "../data/theme-presets";
@@ -39,13 +37,13 @@ export function InteractiveStudio() {
   const [selectedTheme, setSelectedTheme] = useState<ThemePreset>(THEME_PRESETS[0]);
   const [moduleShape, setModuleShape] = useState<ModuleShape>("rounded");
   const [eyeStyle, setEyeStyle] = useState<EyeStyle>("rounded");
-  const [logo, setLogo] = useState<LogoPreset>("qrstudio");
+  const [logo, setLogo] = useState<LogoPreset>("qrlab");
   const [copied, setCopied] = useState(false);
   const [customFg, setCustomFg] = useState<string>("");
 
   // Form states
   const [urlInput, setUrlInput] = useState("https://mrafiq.vercel.app");
-  
+
   const [wifiSsid, setWifiSsid] = useState("Studio_Guest_5G");
   const [wifiPass, setWifiPass] = useState("Artistic2026!");
   const [wifiEnc, setWifiEnc] = useState<"WPA" | "WEP" | "nopass">("WPA");
@@ -53,15 +51,15 @@ export function InteractiveStudio() {
 
   const [vcardFirst, setVcardFirst] = useState("Muhammad");
   const [vcardLast, setVcardLast] = useState("Rafiq");
-  const [vcardOrg, setVcardOrg] = useState("QR Studio");
+  const [vcardOrg, setVcardOrg] = useState("QRLab");
   const [vcardTitle, setVcardTitle] = useState("Lead Engineer");
   const [vcardPhone, setVcardPhone] = useState("+1 555-0199");
   const [vcardEmail, setVcardEmail] = useState("mrafiqdot825@gmail.com");
   const [vcardUrl, setVcardUrl] = useState("https://mrafiq.vercel.app");
 
-  const [emailTo, setEmailTo] = useState("contact@qrstudio.me");
+  const [emailTo, setEmailTo] = useState("contact@qrlab.me");
   const [emailSubject, setEmailSubject] = useState("Partnership Inquiry");
-  const [emailBody, setEmailBody] = useState("Hello! I loved creating QR codes with QR Studio.");
+  const [emailBody, setEmailBody] = useState("Hello! I loved creating QR codes with QRLab.");
 
   const [phoneNumber, setPhoneNumber] = useState("+15550199825");
 
@@ -71,7 +69,7 @@ export function InteractiveStudio() {
   const currentPayload = useMemo(() => {
     switch (activeFormat) {
       case "url":
-        return urlInput.trim() || "https://qrstudio.me";
+        return urlInput.trim() || "https://qrlab.me";
       case "wifi":
         return `WIFI:S:${wifiSsid};T:${wifiEnc};P:${wifiPass};${wifiHidden ? "H:true;" : ""};`;
       case "vcard":
@@ -82,7 +80,7 @@ export function InteractiveStudio() {
         return `tel:${phoneNumber.replace(/\s+/g, "")}`;
       case "text":
       default:
-        return textInput || "QR Studio";
+        return textInput || "QRLab";
     }
   }, [
     activeFormat,
@@ -125,50 +123,49 @@ export function InteractiveStudio() {
   };
 
   const handleDownloadSVG = () => {
-    downloadSVG(svgString, `qr-studio-${activeFormat}.svg`);
+    downloadSVG(svgString, `qrlab-${activeFormat}.svg`);
   };
 
   const handleDownloadPNG = () => {
-    downloadPNG(svgString, `qr-studio-${activeFormat}.png`, 2048);
+    downloadPNG(svgString, `qrlab-${activeFormat}.png`, 2048);
   };
 
   const formats = [
-    { id: "url", label: "Website (URL)", icon: Globe },
-    { id: "wifi", label: "Wi-Fi Network", icon: Wifi },
-    { id: "vcard", label: "Digital vCard", icon: Contact },
-    { id: "email", label: "Email Pre-fill", icon: Mail },
-    { id: "phone", label: "Phone Call", icon: Phone },
-    { id: "text", label: "Plain Text", icon: FileText },
-  ] as const;
+    { id: "url", label: "Website", icon: Globe, pastel: "bg-[var(--lavender)]" },
+    { id: "wifi", label: "Wi-Fi", icon: Wifi, pastel: "bg-[var(--sage)]" },
+    { id: "vcard", label: "vCard", icon: Contact, pastel: "bg-[var(--butter)]" },
+    { id: "email", label: "Email", icon: Mail, pastel: "bg-[var(--peach)]" },
+    { id: "phone", label: "Phone", icon: Phone, pastel: "bg-[var(--periwinkle)]" },
+    { id: "text", label: "Text", icon: FileText, pastel: "bg-[var(--bg-canvas)]" },
+  ];
 
   return (
-    <section id="studio" className="py-20 md:py-28 relative scroll-mt-20">
+    <section id="studio" className="py-20 md:py-28 bg-[var(--bg-surface)] relative scroll-mt-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-14 space-y-4">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold badge-pill">
-            <Sparkles className="w-3.5 h-3.5 text-[#3E6FA6]" />
-            <span>INTERACTIVE STUDIO PLAYGROUND</span>
-          </div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-[#0E1B2A]">
-            Try The Live Generator
+        <div className="text-center max-w-3xl mx-auto mb-14 space-y-3">
+          <p className="text-xs sm:text-sm font-semibold tracking-wider text-[var(--ink-muted)] uppercase">
+            Live Interactive Studio
+          </p>
+          <h2 className="h2-editorial font-bold text-[var(--ink)]">
+            Design in real-time, <br />
+            <span className="italic font-normal text-[var(--plum)]">tailored to you.</span>
           </h2>
-          <p className="text-base sm:text-lg text-[#5A6A7D]">
-            Experience the design engine powering the Android app. Select your format,
-            tweak the geometry and palettes, and export infinite vector SVG right now.
+          <p className="text-base sm:text-lg text-[var(--ink-muted)] max-w-xl mx-auto leading-relaxed">
+            Customize eye geometries, module curves, curated editorial palettes, and download vector SVG instantly.
           </p>
         </div>
 
-        {/* Studio Workspace Card */}
-        <div className="bg-white rounded-3xl border border-slate-200/90 shadow-xl overflow-hidden grid grid-cols-1 lg:grid-cols-12">
-          {/* Controls Column (7 cols) */}
-          <div className="lg:col-span-7 p-6 sm:p-8 space-y-8 border-b lg:border-b-0 lg:border-r border-slate-200/80">
-            {/* 1. Format Tabs */}
-            <div>
-              <label className="text-xs font-bold text-slate-400 uppercase tracking-wider block mb-3">
-                1. Select Payload Format
-              </label>
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5">
+        {/* 2-Column Responsive Layout: Options Left, Sticky Preview Right */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
+          {/* LEFT COLUMN: Controls & Input Panels */}
+          <div className="lg:col-span-7 space-y-6 order-2 lg:order-1">
+            {/* 1. Format Chip Selector Group */}
+            <div className="bg-[var(--bg-surface)] rounded-[28px] p-5 sm:p-6 border border-[var(--border-subtle)] shadow-[0_8px_24px_rgba(74,15,58,0.04)]">
+              <span className="text-xs font-semibold text-[var(--ink-muted)] uppercase tracking-wider block mb-3">
+                1. Select Payload Type
+              </span>
+              <div className="grid grid-cols-3 sm:grid-cols-6 gap-2">
                 {formats.map((fmt) => {
                   const Icon = fmt.icon;
                   const isActive = activeFormat === fmt.id;
@@ -176,89 +173,104 @@ export function InteractiveStudio() {
                     <button
                       key={fmt.id}
                       onClick={() => setActiveFormat(fmt.id as FormatTab)}
-                      className={`flex items-center gap-2.5 px-3.5 py-3 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 select-none active:scale-95 ${
+                      className={`flex flex-col items-center justify-center py-3 px-2 rounded-2xl transition-all duration-200 select-none ${
                         isActive
-                          ? "bg-[#3E6FA6] text-white shadow-md shadow-[#3E6FA6]/20 border border-white/20 btn-highlight"
-                          : "bg-white text-slate-700 hover:bg-slate-50 border border-slate-200/80 shadow-2xs hover:border-slate-300"
+                          ? "bg-[var(--plum)] text-white shadow-xs font-semibold scale-102"
+                          : "bg-[var(--bg-canvas)] text-[var(--ink-muted)] hover:text-[var(--ink)] hover:bg-white"
                       }`}
                     >
-                      <Icon className={`w-4 h-4 transition-transform ${isActive ? "text-white scale-110" : "text-[#3E6FA6]"}`} />
-                      <span className="truncate">{fmt.label}</span>
+                      <Icon className="w-5 h-5 mb-1" />
+                      <span className="text-xs truncate w-full text-center">{fmt.label}</span>
                     </button>
                   );
                 })}
               </div>
             </div>
 
-            {/* 2. Format Input Forms */}
-            <div className="bg-[#F8FAFC] p-5 rounded-2xl border border-slate-200/70">
-              <label className="text-xs font-bold text-slate-400 uppercase tracking-wider block mb-3">
-                2. Configure Payload Data
-              </label>
+            {/* 2. Payload Form Fields Card */}
+            <div className="bg-[var(--bg-surface)] rounded-[28px] p-6 sm:p-7 border border-[var(--border-subtle)] shadow-[0_8px_24px_rgba(74,15,58,0.04)]">
+              <div className="flex items-center justify-between mb-4">
+                <span className="text-xs font-semibold text-[var(--ink-muted)] uppercase tracking-wider">
+                  2. Enter Payload Details
+                </span>
+                <span className="text-xs font-medium px-2.5 py-0.5 rounded-full bg-[var(--bg-canvas)] text-[var(--plum)]">
+                  100% Offline
+                </span>
+              </div>
 
+              {/* URL Input */}
               {activeFormat === "url" && (
-                <div className="space-y-2">
-                  <span className="text-xs font-medium text-slate-600">Destination Website URL</span>
-                  <div className="relative">
-                    <Globe className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
-                    <input
-                      type="url"
-                      value={urlInput}
-                      onChange={(e) => setUrlInput(e.target.value)}
-                      placeholder="https://yourwebsite.com"
-                      className="w-full pl-10 pr-4 py-2.5 bg-white border border-slate-300 rounded-xl text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#3E6FA6]"
-                    />
-                  </div>
+                <div className="space-y-3">
+                  <label htmlFor="url-input" className="block text-sm font-semibold text-[var(--ink)]">
+                    Target Destination URL
+                  </label>
+                  <input
+                    id="url-input"
+                    type="url"
+                    value={urlInput}
+                    onChange={(e) => setUrlInput(e.target.value)}
+                    placeholder="https://example.com"
+                    className="w-full px-4 py-3 bg-[var(--bg-surface)] border border-[var(--border-subtle)] rounded-2xl text-[var(--ink)] placeholder:text-[var(--ink-muted)]/60 text-sm focus:outline-none focus:ring-2 focus:ring-[var(--plum)] focus:bg-white transition-all"
+                  />
+                  <p className="text-xs text-[var(--ink-muted)]">
+                    Direct permanent URL. Zero intermediate redirects, zero subscription expiration.
+                  </p>
                 </div>
               )}
 
+              {/* Wi-Fi Input */}
               {activeFormat === "wifi" && (
-                <div className="space-y-3">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    <div>
-                      <span className="text-xs font-medium text-slate-600">Network Name (SSID)</span>
-                      <input
-                        type="text"
-                        value={wifiSsid}
-                        onChange={(e) => setWifiSsid(e.target.value)}
-                        placeholder="MyHomeWifi"
-                        className="w-full px-3 py-2 bg-white border border-slate-300 rounded-xl text-sm"
-                      />
-                    </div>
-                    <div>
-                      <span className="text-xs font-medium text-slate-600">Password / Key</span>
-                      <input
-                        type="text"
-                        value={wifiPass}
-                        onChange={(e) => setWifiPass(e.target.value)}
-                        placeholder="SecretKey123"
-                        className="w-full px-3 py-2 bg-white border border-slate-300 rounded-xl text-sm"
-                      />
-                    </div>
+                <div className="space-y-4">
+                  <div>
+                    <label htmlFor="wifi-ssid" className="block text-sm font-semibold text-[var(--ink)] mb-1">
+                      Network Name (SSID)
+                    </label>
+                    <input
+                      id="wifi-ssid"
+                      type="text"
+                      value={wifiSsid}
+                      onChange={(e) => setWifiSsid(e.target.value)}
+                      placeholder="My_Guest_WiFi"
+                      className="w-full px-4 py-3 bg-[var(--bg-surface)] border border-[var(--border-subtle)] rounded-2xl text-[var(--ink)] text-sm focus:outline-none focus:ring-2 focus:ring-[var(--plum)] focus:bg-white transition-all"
+                    />
                   </div>
-                  <div className="flex flex-wrap items-center justify-between gap-2 pt-1 text-xs">
-                    <div className="flex items-center gap-2">
-                      <span className="text-slate-600">Encryption:</span>
-                      {(["WPA", "WEP", "nopass"] as const).map((enc) => (
-                        <button
-                          key={enc}
-                          onClick={() => setWifiEnc(enc)}
-                          className={`px-3 py-1 rounded-lg border font-semibold transition-all select-none active:scale-95 ${
-                            wifiEnc === enc
-                              ? "bg-[#3E6FA6] text-white border-[#3E6FA6] shadow-xs"
-                              : "bg-white text-slate-600 border-slate-200 hover:bg-slate-50"
-                          }`}
-                        >
-                          {enc === "nopass" ? "Open" : enc}
-                        </button>
-                      ))}
-                    </div>
-                    <label className="flex items-center gap-1.5 cursor-pointer text-slate-700">
+
+                  <div>
+                    <label htmlFor="wifi-pass" className="block text-sm font-semibold text-[var(--ink)] mb-1">
+                      Network Password
+                    </label>
+                    <input
+                      id="wifi-pass"
+                      type="text"
+                      value={wifiPass}
+                      onChange={(e) => setWifiPass(e.target.value)}
+                      placeholder="Enter Wi-Fi password"
+                      className="w-full px-4 py-3 bg-[var(--bg-surface)] border border-[var(--border-subtle)] rounded-2xl text-[var(--ink)] text-sm focus:outline-none focus:ring-2 focus:ring-[var(--plum)] focus:bg-white transition-all"
+                    />
+                  </div>
+
+                  <div className="flex flex-wrap items-center gap-4 pt-1 text-xs">
+                    <span className="font-semibold text-[var(--ink)]">Security:</span>
+                    {(["WPA", "WEP", "nopass"] as const).map((enc) => (
+                      <button
+                        key={enc}
+                        onClick={() => setWifiEnc(enc)}
+                        className={`px-3 py-1.5 rounded-full transition-all ${
+                          wifiEnc === enc
+                            ? "bg-[var(--plum)] text-white font-semibold"
+                            : "bg-[var(--bg-surface)] text-[var(--ink-muted)] hover:text-[var(--ink)]"
+                        }`}
+                      >
+                        {enc === "nopass" ? "Open" : enc}
+                      </button>
+                    ))}
+
+                    <label className="flex items-center gap-2 cursor-pointer ml-auto text-[var(--ink-muted)]">
                       <input
                         type="checkbox"
                         checked={wifiHidden}
                         onChange={(e) => setWifiHidden(e.target.checked)}
-                        className="rounded text-[#3E6FA6]"
+                        className="rounded accent-[var(--plum)]"
                       />
                       <span>Hidden SSID</span>
                     </label>
@@ -266,176 +278,166 @@ export function InteractiveStudio() {
                 </div>
               )}
 
+              {/* vCard Input */}
               {activeFormat === "vcard" && (
-                <div className="space-y-3">
-                  <div className="grid grid-cols-2 gap-3">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                  <div>
+                    <label htmlFor="vcard-first" className="block text-xs font-semibold text-[var(--ink)] mb-1">First Name</label>
                     <input
+                      id="vcard-first"
                       type="text"
                       value={vcardFirst}
                       onChange={(e) => setVcardFirst(e.target.value)}
-                      placeholder="First Name"
-                      className="px-3 py-2 bg-white border border-slate-300 rounded-xl text-sm"
+                      className="w-full px-3.5 py-2.5 bg-[var(--bg-surface)] border border-[var(--border-subtle)] rounded-2xl text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-[var(--plum)] focus:bg-white"
                     />
+                  </div>
+                  <div>
+                    <label htmlFor="vcard-last" className="block text-xs font-semibold text-[var(--ink)] mb-1">Last Name</label>
                     <input
+                      id="vcard-last"
                       type="text"
                       value={vcardLast}
                       onChange={(e) => setVcardLast(e.target.value)}
-                      placeholder="Last Name"
-                      className="px-3 py-2 bg-white border border-slate-300 rounded-xl text-sm"
+                      className="w-full px-3.5 py-2.5 bg-[var(--bg-surface)] border border-[var(--border-subtle)] rounded-2xl text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-[var(--plum)] focus:bg-white"
                     />
                   </div>
-                  <div className="grid grid-cols-2 gap-3">
+                  <div>
+                    <label htmlFor="vcard-org" className="block text-xs font-semibold text-[var(--ink)] mb-1">Company / Organization</label>
                     <input
+                      id="vcard-org"
                       type="text"
                       value={vcardOrg}
                       onChange={(e) => setVcardOrg(e.target.value)}
-                      placeholder="Company / Org"
-                      className="px-3 py-2 bg-white border border-slate-300 rounded-xl text-sm"
+                      className="w-full px-3.5 py-2.5 bg-[var(--bg-surface)] border border-[var(--border-subtle)] rounded-2xl text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-[var(--plum)] focus:bg-white"
                     />
+                  </div>
+                  <div>
+                    <label htmlFor="vcard-title" className="block text-xs font-semibold text-[var(--ink)] mb-1">Job Title</label>
                     <input
+                      id="vcard-title"
                       type="text"
                       value={vcardTitle}
                       onChange={(e) => setVcardTitle(e.target.value)}
-                      placeholder="Job Title"
-                      className="px-3 py-2 bg-white border border-slate-300 rounded-xl text-sm"
+                      className="w-full px-3.5 py-2.5 bg-[var(--bg-surface)] border border-[var(--border-subtle)] rounded-2xl text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-[var(--plum)] focus:bg-white"
                     />
                   </div>
-                  <div className="grid grid-cols-2 gap-3">
+                  <div>
+                    <label htmlFor="vcard-phone" className="block text-xs font-semibold text-[var(--ink)] mb-1">Phone Number</label>
                     <input
+                      id="vcard-phone"
                       type="tel"
                       value={vcardPhone}
                       onChange={(e) => setVcardPhone(e.target.value)}
-                      placeholder="Phone Number"
-                      className="px-3 py-2 bg-white border border-slate-300 rounded-xl text-sm"
+                      className="w-full px-3.5 py-2.5 bg-[var(--bg-surface)] border border-[var(--border-subtle)] rounded-2xl text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-[var(--plum)] focus:bg-white"
                     />
+                  </div>
+                  <div>
+                    <label htmlFor="vcard-email" className="block text-xs font-semibold text-[var(--ink)] mb-1">Email Address</label>
                     <input
+                      id="vcard-email"
                       type="email"
                       value={vcardEmail}
                       onChange={(e) => setVcardEmail(e.target.value)}
-                      placeholder="Email Address"
-                      className="px-3 py-2 bg-white border border-slate-300 rounded-xl text-sm"
+                      className="w-full px-3.5 py-2.5 bg-[var(--bg-surface)] border border-[var(--border-subtle)] rounded-2xl text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-[var(--plum)] focus:bg-white"
                     />
                   </div>
                 </div>
               )}
 
+              {/* Email Input */}
               {activeFormat === "email" && (
                 <div className="space-y-3">
-                  <input
-                    type="email"
-                    value={emailTo}
-                    onChange={(e) => setEmailTo(e.target.value)}
-                    placeholder="Recipient email address"
-                    className="w-full px-3 py-2 bg-white border border-slate-300 rounded-xl text-sm"
-                  />
-                  <input
-                    type="text"
-                    value={emailSubject}
-                    onChange={(e) => setEmailSubject(e.target.value)}
-                    placeholder="Subject line"
-                    className="w-full px-3 py-2 bg-white border border-slate-300 rounded-xl text-sm"
-                  />
-                  <textarea
-                    rows={2}
-                    value={emailBody}
-                    onChange={(e) => setEmailBody(e.target.value)}
-                    placeholder="Pre-filled email body..."
-                    className="w-full px-3 py-2 bg-white border border-slate-300 rounded-xl text-sm"
-                  />
-                </div>
-              )}
-
-              {activeFormat === "phone" && (
-                <div className="space-y-2">
-                  <span className="text-xs font-medium text-slate-600">Telephone Number</span>
-                  <div className="relative">
-                    <Phone className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
+                  <div>
+                    <label htmlFor="email-to" className="block text-xs font-semibold text-[var(--ink)] mb-1">Recipient Email</label>
                     <input
-                      type="tel"
-                      value={phoneNumber}
-                      onChange={(e) => setPhoneNumber(e.target.value)}
-                      placeholder="+1 555-0199"
-                      className="w-full pl-10 pr-4 py-2.5 bg-white border border-slate-300 rounded-xl text-sm"
+                      id="email-to"
+                      type="email"
+                      value={emailTo}
+                      onChange={(e) => setEmailTo(e.target.value)}
+                      className="w-full px-4 py-2.5 bg-[var(--bg-surface)] border border-[var(--border-subtle)] rounded-2xl text-sm focus:outline-none focus:ring-2 focus:ring-[var(--plum)] focus:bg-white"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="email-subject" className="block text-xs font-semibold text-[var(--ink)] mb-1">Pre-filled Subject</label>
+                    <input
+                      id="email-subject"
+                      type="text"
+                      value={emailSubject}
+                      onChange={(e) => setEmailSubject(e.target.value)}
+                      className="w-full px-4 py-2.5 bg-[var(--bg-surface)] border border-[var(--border-subtle)] rounded-2xl text-sm focus:outline-none focus:ring-2 focus:ring-[var(--plum)] focus:bg-white"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="email-body" className="block text-xs font-semibold text-[var(--ink)] mb-1">Pre-filled Body Message</label>
+                    <textarea
+                      id="email-body"
+                      rows={2}
+                      value={emailBody}
+                      onChange={(e) => setEmailBody(e.target.value)}
+                      className="w-full px-4 py-2.5 bg-[var(--bg-surface)] border border-[var(--border-subtle)] rounded-2xl text-sm focus:outline-none focus:ring-2 focus:ring-[var(--plum)] focus:bg-white"
                     />
                   </div>
                 </div>
               )}
 
+              {/* Phone Input */}
+              {activeFormat === "phone" && (
+                <div className="space-y-3">
+                  <label htmlFor="phone-input" className="block text-sm font-semibold text-[var(--ink)]">
+                    Dialer Phone Number
+                  </label>
+                  <input
+                    id="phone-input"
+                    type="tel"
+                    value={phoneNumber}
+                    onChange={(e) => setPhoneNumber(e.target.value)}
+                    placeholder="+1 555-0199"
+                    className="w-full px-4 py-3 bg-[var(--bg-surface)] border border-[var(--border-subtle)] rounded-2xl text-[var(--ink)] text-sm focus:outline-none focus:ring-2 focus:ring-[var(--plum)] focus:bg-white"
+                  />
+                  <p className="text-xs text-[var(--ink-muted)]">
+                    Opening the QR code triggers the native phone dialer with this number.
+                  </p>
+                </div>
+              )}
+
+              {/* Plain Text Input */}
               {activeFormat === "text" && (
-                <div className="space-y-2">
-                  <span className="text-xs font-medium text-slate-600">Alphanumeric Text</span>
+                <div className="space-y-3">
+                  <label htmlFor="plain-text-input" className="block text-sm font-semibold text-[var(--ink)]">
+                    Raw Text or Voucher String
+                  </label>
                   <textarea
+                    id="plain-text-input"
                     rows={3}
                     value={textInput}
                     onChange={(e) => setTextInput(e.target.value)}
-                    placeholder="Enter any text or notes..."
-                    className="w-full px-3 py-2 bg-white border border-slate-300 rounded-xl text-sm"
+                    placeholder="Enter plain text, promo coupon, or offline token..."
+                    className="w-full px-4 py-3 bg-[var(--bg-surface)] border border-[var(--border-subtle)] rounded-2xl text-[var(--ink)] text-sm focus:outline-none focus:ring-2 focus:ring-[var(--plum)] focus:bg-white"
                   />
                 </div>
               )}
             </div>
 
-            {/* 3. Theme Presets Swatches */}
-            <div>
-              <div className="flex items-center justify-between mb-3">
-                <label className="text-xs font-bold text-slate-400 uppercase tracking-wider">
-                  3. Color Palette Preset
-                </label>
-                <span className="text-xs font-semibold text-[#3E6FA6]">
-                  {selectedTheme.name}
-                </span>
-              </div>
-              <div className="grid grid-cols-4 sm:grid-cols-8 gap-2">
-                {THEME_PRESETS.map((preset) => {
-                  const isSelected = selectedTheme.id === preset.id && !customFg;
-                  return (
-                    <button
-                      key={preset.id}
-                      onClick={() => {
-                        setSelectedTheme(preset);
-                        setCustomFg("");
-                      }}
-                      className={`relative p-2 rounded-xl flex flex-col items-center gap-1.5 transition-all duration-200 select-none active:scale-90 ${
-                        isSelected
-                          ? "ring-2 ring-offset-2 ring-[#3E6FA6] bg-blue-50/70 scale-105 shadow-sm"
-                          : "hover:bg-slate-50 opacity-85 hover:opacity-100"
-                      }`}
-                      title={preset.name}
-                    >
-                      <span
-                        className="w-7 h-7 rounded-lg shadow-xs flex items-center justify-center border transition-transform hover:scale-105"
-                        style={{
-                          backgroundColor: preset.qrColor,
-                          borderColor: "rgba(0,0,0,0.1)",
-                        }}
-                      >
-                        {isSelected && <Check className="w-3.5 h-3.5 text-white" />}
-                      </span>
-                      <span className="text-[10px] font-medium text-slate-600 truncate max-w-[56px]">
-                        {preset.name.split(" ")[0]}
-                      </span>
-                    </button>
-                  );
-                })}
-              </div>
-            </div>
+            {/* 3. Customization Controls Card */}
+            <div className="bg-[var(--bg-surface)] rounded-[28px] p-6 sm:p-7 border border-[var(--border-subtle)] shadow-[0_8px_24px_rgba(74,15,58,0.04)] space-y-6">
+              <span className="text-xs font-semibold text-[var(--ink-muted)] uppercase tracking-wider block">
+                3. Customize Shapes & Curated Palettes
+              </span>
 
-            {/* 4. Geometry Styling (Shapes, Eyes, Badges) */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
-              {/* Module Shape */}
+              {/* Module Shape Picker */}
               <div>
-                <label className="text-xs font-bold text-slate-400 uppercase tracking-wider block mb-2">
-                  Module Shape
+                <label className="block text-xs font-semibold text-[var(--ink)] mb-2">
+                  Module Shape Geometry
                 </label>
-                <div className="grid grid-cols-3 gap-1 bg-slate-100/90 p-1 rounded-xl text-xs font-medium border border-slate-200/50">
+                <div className="grid grid-cols-3 gap-2">
                   {(["rounded", "dots", "square"] as ModuleShape[]).map((shape) => (
                     <button
                       key={shape}
                       onClick={() => setModuleShape(shape)}
-                      className={`py-1.5 rounded-lg capitalize transition-all duration-200 select-none active:scale-95 ${
+                      className={`py-2 px-3 rounded-full text-xs capitalize transition-all select-none ${
                         moduleShape === shape
-                          ? "segmented-pill-active font-bold text-slate-900"
-                          : "text-slate-600 hover:text-slate-900"
+                          ? "bg-[var(--plum)] text-white font-semibold shadow-xs"
+                          : "bg-white/70 border border-[var(--border-subtle)] text-[var(--ink-muted)] hover:text-[var(--ink)] hover:bg-white"
                       }`}
                     >
                       {shape}
@@ -444,20 +446,20 @@ export function InteractiveStudio() {
                 </div>
               </div>
 
-              {/* Eye Style */}
+              {/* Eye Style Picker */}
               <div>
-                <label className="text-xs font-bold text-slate-400 uppercase tracking-wider block mb-2">
-                  Corner Eye Style
+                <label className="block text-xs font-semibold text-[var(--ink)] mb-2">
+                  Eye / Finder Pattern Corners
                 </label>
-                <div className="grid grid-cols-3 gap-1 bg-slate-100/90 p-1 rounded-xl text-xs font-medium border border-slate-200/50">
+                <div className="grid grid-cols-3 gap-2">
                   {(["rounded", "circle", "square"] as EyeStyle[]).map((eye) => (
                     <button
                       key={eye}
                       onClick={() => setEyeStyle(eye)}
-                      className={`py-1.5 rounded-lg capitalize transition-all duration-200 select-none active:scale-95 ${
+                      className={`py-2 px-3 rounded-full text-xs capitalize transition-all select-none ${
                         eyeStyle === eye
-                          ? "segmented-pill-active font-bold text-slate-900"
-                          : "text-slate-600 hover:text-slate-900"
+                          ? "bg-[var(--plum)] text-white font-semibold shadow-xs"
+                          : "bg-white/70 border border-[var(--border-subtle)] text-[var(--ink-muted)] hover:text-[var(--ink)] hover:bg-white"
                       }`}
                     >
                       {eye}
@@ -466,23 +468,61 @@ export function InteractiveStudio() {
                 </div>
               </div>
 
-              {/* Center Logo */}
+              {/* Logo / Badge Preset */}
               <div>
-                <label className="text-xs font-bold text-slate-400 uppercase tracking-wider block mb-2">
-                  Center Emblem
+                <label className="block text-xs font-semibold text-[var(--ink)] mb-2">
+                  Center Logo Badge (Level-H Protected)
                 </label>
-                <div className="grid grid-cols-4 gap-1 bg-slate-100/90 p-1 rounded-xl text-xs font-medium border border-slate-200/50">
-                  {(["none", "qrstudio", "star", "shield"] as LogoPreset[]).map((badge) => (
+                <div className="grid grid-cols-5 gap-1.5">
+                  {(["none", "qrlab", "star", "heart", "shield"] as LogoPreset[]).map((l) => (
                     <button
-                      key={badge}
-                      onClick={() => setLogo(badge)}
-                      className={`py-1.5 rounded-lg capitalize transition-all duration-200 select-none active:scale-95 text-[11px] ${
-                        logo === badge
-                          ? "segmented-pill-active font-bold text-slate-900"
-                          : "text-slate-600 hover:text-slate-900"
+                      key={l}
+                      onClick={() => setLogo(l)}
+                      className={`py-2 px-1 text-[11px] rounded-full capitalize transition-all select-none ${
+                        logo === l
+                          ? "bg-[var(--plum)] text-white font-semibold shadow-xs"
+                          : "bg-white/70 border border-[var(--border-subtle)] text-[var(--ink-muted)] hover:text-[var(--ink)] hover:bg-white"
                       }`}
                     >
-                      {badge === "qrstudio" ? "Studio" : badge}
+                      {l}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Curated Editorial Palettes */}
+              <div>
+                <div className="flex items-center justify-between mb-2">
+                  <label className="text-xs font-semibold text-[var(--ink)]">
+                    Curated Scannable Editorial Palettes
+                  </label>
+                  <span className="text-[11px] text-[var(--ink-muted)]">
+                    {selectedTheme.name}
+                  </span>
+                </div>
+                <div className="grid grid-cols-4 sm:grid-cols-8 gap-2">
+                  {THEME_PRESETS.map((preset) => (
+                    <button
+                      key={preset.id}
+                      onClick={() => {
+                        setSelectedTheme(preset);
+                        setCustomFg("");
+                      }}
+                      className={`group relative h-10 rounded-2xl transition-all flex items-center justify-center select-none ${
+                        selectedTheme.id === preset.id && !customFg
+                          ? "ring-2 ring-offset-2 ring-[var(--plum)] scale-105 shadow-xs"
+                          : "hover:scale-102 opacity-85 hover:opacity-100"
+                      }`}
+                      style={{
+                        background: `linear-gradient(135deg, ${preset.gradient[0]}, ${preset.gradient[2]})`,
+                        border: `1.5px solid ${preset.qrColor}`,
+                      }}
+                      title={preset.name}
+                    >
+                      <span
+                        className="w-3.5 h-3.5 rounded-full shadow-inner"
+                        style={{ backgroundColor: preset.qrColor }}
+                      />
                     </button>
                   ))}
                 </div>
@@ -490,89 +530,91 @@ export function InteractiveStudio() {
             </div>
           </div>
 
-          {/* Preview & Export Column (5 cols) */}
-          <div className="lg:col-span-5 bg-gradient-to-b from-slate-50 to-white p-6 sm:p-8 flex flex-col justify-between space-y-6">
-            <div>
-              {/* Header */}
-              <div className="flex items-center justify-between pb-4 border-b border-slate-200">
-                <span className="text-xs font-bold text-slate-500 uppercase tracking-wider">
-                  Live Preview Output
-                </span>
-                <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
-                  100% Scannable (Level H)
-                </span>
+          {/* RIGHT COLUMN: Sticky Live Scannable Preview & Download Card */}
+          <div className="lg:col-span-5 lg:sticky lg:top-24 order-1 lg:order-2">
+            <div className="bg-[var(--bg-surface)] rounded-[32px] p-6 sm:p-8 border border-[var(--border-subtle)] shadow-[0_16px_36px_rgba(74,15,58,0.08)] space-y-6">
+              <div className="flex items-center justify-between">
+                <div>
+                  <h3 className="font-serif text-xl font-bold text-[var(--ink)]">
+                    Live QR Preview
+                  </h3>
+                  <p className="text-xs text-[var(--ink-muted)]">
+                    Updates instantly as you type
+                  </p>
+                </div>
+                <button
+                  onClick={handleCopy}
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium bg-white/70 hover:bg-white text-[var(--ink)] transition-colors border border-[var(--border-subtle)] shadow-2xs"
+                  title="Copy encoded payload"
+                >
+                  {copied ? (
+                    <>
+                      <Check className="w-3.5 h-3.5 text-[var(--leaf)]" />
+                      <span className="text-[var(--leaf)] font-semibold">Copied!</span>
+                    </>
+                  ) : (
+                    <>
+                      <Copy className="w-3.5 h-3.5" />
+                      <span>Copy Payload</span>
+                    </>
+                  )}
+                </button>
               </div>
 
-              {/* Generated QR Canvas Card */}
+              {/* Scannable QR Container (Pure White Canvas with Quiet Zone) */}
               <div
-                className="mt-6 p-6 sm:p-8 rounded-3xl flex flex-col items-center justify-center relative shadow-inner transition-all duration-300"
+                className="p-6 sm:p-8 rounded-[28px] flex flex-col items-center justify-center relative overflow-hidden transition-all duration-300 shadow-inner"
                 style={{
                   background: `linear-gradient(135deg, ${selectedTheme.gradient[0]}, ${selectedTheme.gradient[1]}, ${selectedTheme.gradient[2]})`,
                 }}
               >
-                <div className="w-60 h-60 sm:w-68 sm:h-68 p-4 bg-white rounded-2xl shadow-xl shadow-slate-900/10 flex items-center justify-center transition-all hover:scale-[1.02]">
+                <div className="w-60 h-60 sm:w-64 sm:h-64 p-4 bg-white rounded-2xl shadow-[0_8px_24px_rgba(74,15,58,0.09)] border border-[var(--border-subtle)] flex items-center justify-center transition-transform hover:scale-[1.01]">
                   <div
                     className="w-full h-full"
                     dangerouslySetInnerHTML={{ __html: svgString }}
                   />
                 </div>
 
-                <div className="mt-4 flex items-center gap-2">
-                  <span className="text-xs font-medium text-slate-700">
-                    Theme: <strong className="text-slate-900">{selectedTheme.name}</strong>
-                  </span>
-                  <span className="text-slate-300">•</span>
-                  <span className="text-xs font-medium text-slate-700">
-                    Shape: <strong className="capitalize text-slate-900">{moduleShape}</strong>
-                  </span>
+                <div className="mt-4 flex items-center gap-2 text-xs font-medium text-[var(--ink)] bg-white/90 backdrop-blur-sm px-3.5 py-1 rounded-full border border-[var(--border-subtle)] shadow-xs">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-[var(--leaf)]" />
+                  <span>High Contrast • 100% Scannable</span>
                 </div>
               </div>
 
-              {/* Payload viewer snippet */}
-              <div className="mt-5 p-3 rounded-xl bg-slate-100/90 border border-slate-200 flex items-center justify-between gap-2">
-                <div className="truncate text-xs font-mono text-slate-600 max-w-[240px] sm:max-w-[280px]">
-                  {currentPayload}
-                </div>
-                <button
-                  onClick={handleCopy}
-                  className="flex items-center gap-1.5 text-xs font-semibold text-[#3E6FA6] hover:text-[#2A5280] px-2.5 py-1.5 rounded-lg bg-white shadow-xs border border-slate-200 flex-shrink-0 active:scale-95 transition-all select-none"
-                >
-                  {copied ? <Check className="w-3.5 h-3.5 text-emerald-600" /> : <Copy className="w-3.5 h-3.5" />}
-                  <span>{copied ? "Copied" : "Copy"}</span>
-                </button>
-              </div>
-            </div>
-
-            {/* Export Action Buttons */}
-            <div className="space-y-3 pt-2">
-              <div className="grid grid-cols-2 gap-3">
+              {/* Download Action Buttons */}
+              <div className="space-y-3 pt-2">
                 <Button
                   variant="primary"
                   size="lg"
-                  glow
-                  shimmer
+                  fullWidth
                   onClick={handleDownloadSVG}
-                  icon={<Download className="w-4 h-4 text-sky-400" />}
+                  icon={<Download className="w-4 h-4" />}
                 >
-                  Download SVG
+                  Download Infinite Vector (SVG)
                 </Button>
 
                 <Button
-                  variant="brand"
-                  size="lg"
-                  glow
-                  shimmer
+                  variant="secondary"
+                  size="md"
+                  fullWidth
                   onClick={handleDownloadPNG}
-                  icon={<Download className="w-4 h-4 text-white" />}
+                  icon={<Download className="w-4 h-4 text-[var(--plum)]" />}
                 >
-                  Download PNG
+                  Download High-Res 2048px (PNG)
                 </Button>
               </div>
 
-              <p className="text-center text-[11px] text-slate-500">
-                Vector SVG allows infinite loss-less scaling for signage, merch & print.
-              </p>
+              {/* Guarantee badges */}
+              <div className="pt-2 border-t border-[var(--border-subtle)] flex items-center justify-between text-xs text-[var(--ink-muted)]">
+                <span className="flex items-center gap-1.5">
+                  <ShieldCheck className="w-4 h-4 text-[var(--leaf)]" />
+                  Commercial License
+                </span>
+                <span>•</span>
+                <span>Permanent Link</span>
+                <span>•</span>
+                <span>No Paywalls</span>
+              </div>
             </div>
           </div>
         </div>

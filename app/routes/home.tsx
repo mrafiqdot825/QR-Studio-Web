@@ -15,8 +15,8 @@ import { Footer } from "../components/Footer";
 
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: "QR Studio — Artistic 3D & Vector QR Code Maker" },
-    { name: "title", content: "QR Studio — Artistic 3D & Vector QR Code Maker" },
+    { title: "QRLab — Artistic 3D & Vector QR Code Maker" },
+    { name: "title", content: "QRLab — Artistic 3D & Vector QR Code Maker" },
     {
       name: "description",
       content:
@@ -25,13 +25,13 @@ export function meta({}: Route.MetaArgs) {
     {
       name: "keywords",
       content:
-        "QR code maker, custom QR code generator, vector QR SVG, branded QR codes, Wi-Fi QR, vCard QR, offline QR creator, QR Studio",
+        "QR code maker, custom QR code generator, vector QR SVG, branded QR codes, Wi-Fi QR, vCard QR, offline QR creator, QRLab",
     },
     { property: "og:type", content: "website" },
-    { property: "og:url", content: "https://mrafiq.vercel.app/qr-studio" },
+    { property: "og:url", content: "https://mrafiq.vercel.app/qrlab" },
     {
       property: "og:title",
-      content: "QR Studio — Artistic 3D & Vector QR Code Maker",
+      content: "QRLab — Artistic 3D & Vector QR Code Maker",
     },
     {
       property: "og:description",
@@ -45,7 +45,7 @@ export function meta({}: Route.MetaArgs) {
     { property: "twitter:card", content: "summary_large_image" },
     {
       property: "twitter:title",
-      content: "QR Studio — Artistic 3D & Vector QR Code Maker",
+      content: "QRLab — Artistic 3D & Vector QR Code Maker",
     },
     {
       property: "twitter:description",
@@ -61,7 +61,7 @@ export function meta({}: Route.MetaArgs) {
 
 export default function Home() {
   return (
-    <div className="min-h-screen flex flex-col bg-[#F4F8FC] text-[#0E1B2A] selection:bg-[#3E6FA6] selection:text-white">
+    <div className="min-h-screen flex flex-col bg-[var(--bg-canvas)] text-[var(--ink)] selection:bg-[var(--plum)] selection:text-white">
       {/* 1. Sticky Navigation Bar */}
       <Navbar />
 
@@ -72,16 +72,14 @@ export default function Home() {
         {/* 3. Social Proof & Metrics Strip */}
         <MetricsStrip />
 
-        {/* 4. Live Interactive Studio Demo Playground */}
-        <InteractiveStudio />
+        {/* 4. Supported Data Formats & Feature Tiles Grid */}
+        <DataFormatsGrid />
 
         {/* 5. Visual Customization Showcase */}
-        <div id="features">
-          <CustomizationShowcase />
-        </div>
+        <CustomizationShowcase />
 
-        {/* 6. Supported Data Formats Grid */}
-        <DataFormatsGrid />
+        {/* 6. Live Interactive Studio Demo Playground */}
+        <InteractiveStudio />
 
         {/* 7. Curated Designer Templates Gallery */}
         <TemplatesGallery />

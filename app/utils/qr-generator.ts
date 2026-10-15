@@ -2,7 +2,7 @@ import QRCode from "qrcode";
 
 export type ModuleShape = "square" | "rounded" | "dots";
 export type EyeStyle = "square" | "rounded" | "circle";
-export type LogoPreset = "none" | "qrstudio" | "star" | "heart" | "shield";
+export type LogoPreset = "none" | "qrlab" | "qrstudio" | "star" | "heart" | "shield";
 
 export interface QRCodeOptions {
   text: string;
@@ -101,14 +101,15 @@ export function getLogoSVGContent(logo: LogoPreset, cx: number, cy: number, size
   const x = cx - half;
   const y = cy - half;
 
-  if (logo === "qrstudio") {
-    // Stylized QR Studio icon
+  if (logo === "qrlab" || logo === "qrstudio") {
+    // Stylized QRLab viewfinder logo
     return `
       <g transform="translate(${x}, ${y}) scale(${iconSize / 24})">
-        <rect x="3" y="3" width="7" height="7" rx="1.5" fill="${fgColor}" />
-        <rect x="14" y="3" width="7" height="7" rx="1.5" fill="${fgColor}" />
-        <rect x="3" y="14" width="7" height="7" rx="1.5" fill="${fgColor}" />
-        <circle cx="17.5" cy="17.5" r="3.5" fill="${fgColor}" />
+        <path d="M4 8V5.5A1.5 1.5 0 0 1 5.5 4H8M16 4h2.5A1.5 1.5 0 0 1 20 5.5V8M20 16v2.5a1.5 1.5 0 0 1-1.5 1.5H16M8 20H5.5A1.5 1.5 0 0 1 4 18.5V16" stroke="${fgColor}" stroke-width="1.6" stroke-linecap="round" fill="none" />
+        <rect x="7" y="7" width="4.5" height="4.5" rx="1" fill="${fgColor}" />
+        <rect x="12.5" y="7" width="4.5" height="4.5" rx="1" fill="${fgColor}" />
+        <rect x="7" y="12.5" width="4.5" height="4.5" rx="1" fill="${fgColor}" />
+        <rect x="13.5" y="13.5" width="3.5" height="3.5" rx="0.8" fill="${fgColor}" />
       </g>
     `;
   }
@@ -143,7 +144,7 @@ export function getLogoSVGContent(logo: LogoPreset, cx: number, cy: number, size
 export function generateQRSVGString(options: QRCodeOptions): string {
   const {
     text,
-    fgColor = "#0E1B2A",
+    fgColor = "#1A1416",
     bgColor = "#FFFFFF",
     moduleShape = "rounded",
     eyeStyle = "rounded",
@@ -216,7 +217,7 @@ export function generateQRSVGString(options: QRCodeOptions): string {
   `.trim();
 }
 
-export function downloadSVG(svgString: string, filename = "qr-studio-code.svg") {
+export function downloadSVG(svgString: string, filename = "qrlab-code.svg") {
   const blob = new Blob([svgString], { type: "image/svg+xml;charset=utf-8" });
   const url = URL.createObjectURL(blob);
   const link = document.createElement("a");
@@ -228,7 +229,7 @@ export function downloadSVG(svgString: string, filename = "qr-studio-code.svg") 
   URL.revokeObjectURL(url);
 }
 
-export function downloadPNG(svgString: string, filename = "qr-studio-code.png", dimension = 2048) {
+export function downloadPNG(svgString: string, filename = "qrlab-code.png", dimension = 2048) {
   const blob = new Blob([svgString], { type: "image/svg+xml;charset=utf-8" });
   const url = URL.createObjectURL(blob);
   const img = new Image();
