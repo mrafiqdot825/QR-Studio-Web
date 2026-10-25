@@ -185,7 +185,7 @@ export function InteractiveStudio() {
           {/* LEFT COLUMN: Controls & Input Panels */}
           <div className="lg:col-span-7 space-y-6 order-2 lg:order-1">
             {/* 1. Format Chip Selector Group */}
-            <div className="bg-[var(--bg-surface)] rounded-[28px] p-5 sm:p-6 border border-[var(--border-subtle)] shadow-[0_8px_24px_rgba(74,15,58,0.04)]">
+            <div className="bg-[var(--bg-surface)] rounded-none p-5 sm:p-6 border border-[var(--border-subtle)] shadow-[0_8px_24px_rgba(74,15,58,0.04)]">
               <span className="text-xs font-semibold text-[var(--ink-muted)] uppercase tracking-wider block mb-3">
                 1. Select Payload Type
               </span>
@@ -197,7 +197,7 @@ export function InteractiveStudio() {
                     <button
                       key={fmt.id}
                       onClick={() => setActiveFormat(fmt.id as FormatTab)}
-                      className={`flex flex-col items-center justify-center py-3 px-2 rounded-2xl transition-all duration-200 select-none ${
+                      className={`flex flex-col items-center justify-center py-3 px-2 rounded-none transition-all duration-200 select-none ${
                         isActive
                           ? "bg-[var(--plum)] text-white shadow-xs font-semibold scale-102"
                           : "bg-[var(--bg-canvas)] text-[var(--ink-muted)] hover:text-[var(--ink)] hover:bg-white"
@@ -293,7 +293,7 @@ export function InteractiveStudio() {
                       <button
                         key={enc}
                         onClick={() => setWifiEnc(enc)}
-                        className={`px-3 py-1.5 rounded-full transition-all ${
+                        className={`px-3 py-1.5 rounded-none transition-all ${
                           wifiEnc === enc
                             ? "bg-[var(--plum)] text-white font-semibold"
                             : "bg-[var(--bg-surface)] text-[var(--ink-muted)] hover:text-[var(--ink)]"
@@ -509,7 +509,7 @@ export function InteractiveStudio() {
             </div>
 
             {/* 3. Customization Controls Card */}
-            <div className="bg-[var(--bg-surface)] rounded-[28px] p-6 sm:p-7 border border-[var(--border-subtle)] shadow-[0_8px_24px_rgba(74,15,58,0.04)] space-y-6">
+            <div className="bg-[var(--bg-surface)] rounded-none p-6 sm:p-7 border border-[var(--border-subtle)] shadow-[0_8px_24px_rgba(74,15,58,0.04)] space-y-6">
               <span className="text-xs font-semibold text-[var(--ink-muted)] uppercase tracking-wider block">
                 3. Customize Shapes & Curated Palettes
               </span>
@@ -525,7 +525,7 @@ export function InteractiveStudio() {
                       <button
                         key={shape}
                         onClick={() => setModuleShape(shape)}
-                        className={`py-2 px-3 rounded-full text-xs capitalize transition-all select-none ${
+                        className={`py-2 px-3 rounded-none text-xs capitalize transition-all select-none ${
                           moduleShape === shape
                             ? "bg-[var(--plum)] text-white font-semibold shadow-xs"
                             : "bg-white/70 border border-[var(--border-subtle)] text-[var(--ink-muted)] hover:text-[var(--ink)] hover:bg-white"
@@ -549,7 +549,7 @@ export function InteractiveStudio() {
                       <button
                         key={eye}
                         onClick={() => setEyeStyle(eye)}
-                        className={`py-2 px-3 rounded-full text-xs capitalize transition-all select-none ${
+                        className={`py-2 px-3 rounded-none text-xs capitalize transition-all select-none ${
                           eyeStyle === eye
                             ? "bg-[var(--plum)] text-white font-semibold shadow-xs"
                             : "bg-white/70 border border-[var(--border-subtle)] text-[var(--ink-muted)] hover:text-[var(--ink)] hover:bg-white"
@@ -574,7 +574,7 @@ export function InteractiveStudio() {
                     <button
                       key={l}
                       onClick={() => setLogo(l)}
-                      className={`py-2 px-1 text-[11px] rounded-full capitalize transition-all select-none ${
+                      className={`py-2 px-1 text-[11px] rounded-none capitalize transition-all select-none ${
                         logo === l
                           ? "bg-[var(--plum)] text-white font-semibold shadow-xs"
                           : "bg-white/70 border border-[var(--border-subtle)] text-[var(--ink-muted)] hover:text-[var(--ink)] hover:bg-white"
@@ -628,7 +628,7 @@ export function InteractiveStudio() {
 
           {/* RIGHT COLUMN: Sticky Live Scannable Preview & Download Card */}
           <div className="lg:col-span-5 lg:sticky lg:top-24 order-1 lg:order-2">
-            <div className="bg-[var(--bg-surface)] rounded-[32px] p-6 sm:p-8 border border-[var(--border-subtle)] shadow-[0_16px_36px_rgba(74,15,58,0.08)] space-y-6">
+            <div className="bg-[var(--bg-surface)] rounded-none p-6 sm:p-8 border border-[var(--border-subtle)] shadow-[0_16px_36px_rgba(74,15,58,0.08)] space-y-6">
               <div className="flex items-center justify-between">
                 <div>
                   <h3 className="font-serif text-xl font-bold text-[var(--ink)]">
@@ -640,7 +640,7 @@ export function InteractiveStudio() {
                 </div>
                 <button
                   onClick={handleCopy}
-                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium bg-white/70 hover:bg-white text-[var(--ink)] transition-colors border border-[var(--border-subtle)] shadow-2xs"
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-none text-xs font-medium bg-white/70 hover:bg-white text-[var(--ink)] transition-colors border border-[var(--border-subtle)] shadow-2xs"
                   title="Copy encoded payload"
                 >
                   {copied ? (
@@ -661,12 +661,12 @@ export function InteractiveStudio() {
 
               {/* Scannable QR Container (Pure White Canvas with Quiet Zone) */}
               <div
-                className="p-6 sm:p-8 rounded-[28px] flex flex-col items-center justify-center relative overflow-hidden transition-all duration-300 shadow-inner"
+                className="p-6 sm:p-8 rounded-none flex flex-col items-center justify-center relative overflow-hidden transition-all duration-300 shadow-inner"
                 style={{
                   background: `linear-gradient(135deg, ${selectedTheme.gradient[0]}, ${selectedTheme.gradient[1]}, ${selectedTheme.gradient[2]})`,
                 }}
               >
-                <div className="w-60 h-60 sm:w-64 sm:h-64 p-4 bg-white rounded-2xl shadow-[0_8px_24px_rgba(74,15,58,0.09)] border border-[var(--border-subtle)] flex items-center justify-center transition-transform hover:scale-[1.01]">
+                <div className="w-60 h-60 sm:w-64 sm:h-64 p-4 bg-white rounded-none shadow-[0_8px_24px_rgba(74,15,58,0.09)] border border-[var(--border-subtle)] flex items-center justify-center transition-transform hover:scale-[1.01]">
                   <div
                     className="w-full h-full"
                     dangerouslySetInnerHTML={{ __html: svgString }}

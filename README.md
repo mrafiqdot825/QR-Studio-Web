@@ -3,7 +3,7 @@
 <div align="center">
   <img src="public/assets/images/navbar-logo.png" alt="QRLab Logo" width="100" height="100" />
   <h1>QRLab</h1>
-  <p><strong>Make QR codes, <em>beautifully.</em></strong></p>
+  <p><strong>Create. Style. Scan.</strong></p>
   <p><em>Artistic 3D & Vector QR Maker with 100% On-Device Privacy.</em></p>
 </div>
 
@@ -12,7 +12,7 @@
 ## 1. Executive Summary & Brand Positioning
 
 - **Product Name:** QRLab
-- **Primary Tagline:** *Make QR codes, beautifully.*
+- **Primary Taglines:** *Create. Style. Scan.* / *Make QR codes, beautifully.*
 - **Secondary Subtitle:** *Artistic 3D & Vector QR Maker with 100% On-Device Privacy.*
 - **Developer:** Muhammad Rafiq ([Portfolio](https://mrafiq.vercel.app/) | [Email](mailto:mrafiqdot825@gmail.com))
 - **Target Audience:** Freelancers, business owners, graphic designers, restaurant managers, event organizers, and developers looking for high-converting, branded QR codes.

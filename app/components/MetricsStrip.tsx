@@ -45,13 +45,13 @@ export function MetricsStrip() {
             return (
               <div
                 key={idx}
-                className="p-6 rounded-[24px] bg-[var(--bg-surface)] border border-[var(--border-subtle)] shadow-[0_8px_24px_rgba(74,15,58,0.04)] hover:shadow-[0_12px_28px_rgba(74,15,58,0.08)] transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between"
+                className="p-6 rounded-none bg-[var(--bg-surface)] border border-[var(--border-subtle)] shadow-[0_8px_24px_rgba(74,15,58,0.04)] hover:shadow-[0_12px_28px_rgba(74,15,58,0.08)] transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between"
               >
                 <div className="flex items-center justify-between mb-4">
                   <span className="font-serif text-3xl font-bold tracking-tight text-[var(--ink)]">
                     {item.stat}
                   </span>
-                  <div className={`w-10 h-10 rounded-2xl ${item.pastelBg} flex items-center justify-center shrink-0 shadow-xs`}>
+                  <div className={`w-10 h-10 rounded-none ${item.pastelBg} flex items-center justify-center shrink-0 shadow-xs`}>
                     <Icon className={`w-5 h-5 ${item.textColor}`} />
                   </div>
                 </div>

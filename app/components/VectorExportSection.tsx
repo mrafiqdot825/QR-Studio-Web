@@ -28,7 +28,7 @@ export function VectorExportSection() {
         </div>
 
         {/* Comparison Showcase Card */}
-        <div className="bg-[var(--bg-surface)] rounded-[32px] border border-[var(--border-subtle)] shadow-[0_16px_36px_rgba(74,15,58,0.06)] overflow-hidden p-6 sm:p-10 mb-12">
+        <div className="bg-[var(--bg-surface)] rounded-none border border-[var(--border-subtle)] shadow-[0_16px_36px_rgba(74,15,58,0.06)] overflow-hidden p-6 sm:p-10 mb-12">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             {/* Visual Magnifier Cards */}
             <div className="lg:col-span-7 space-y-6">
@@ -40,12 +40,12 @@ export function VectorExportSection() {
                   <span className="text-xs text-[var(--ink-muted)] font-medium">
                     Zoom Level:
                   </span>
-                  <div className="flex items-center gap-1 bg-white/70 p-1 rounded-full border border-[var(--border-subtle)]">
+                  <div className="flex items-center gap-1 bg-white/70 p-1 rounded-none border border-[var(--border-subtle)]">
                     {[2, 4, 8].map((lvl) => (
                       <button
                         key={lvl}
                         onClick={() => setZoomLevel(lvl)}
-                        className={`px-3 py-1 rounded-full text-xs font-medium transition-all select-none ${
+                        className={`px-3 py-1 rounded-none text-xs font-medium transition-all select-none ${
                           zoomLevel === lvl
                             ? "bg-[var(--plum)] text-white shadow-xs font-semibold"
                             : "text-[var(--ink-muted)] hover:text-[var(--ink)]"
@@ -60,13 +60,13 @@ export function VectorExportSection() {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 {/* Generic Low-Res Raster */}
-                <div className="p-6 rounded-[24px] bg-[var(--peach)]/25 border border-[var(--peach)]/60 flex flex-col items-center">
+                <div className="p-6 rounded-none bg-[var(--peach)]/25 border border-[var(--peach)]/60 flex flex-col items-center">
                   <div className="flex items-center gap-2 text-[#8B2C15] font-semibold text-xs uppercase tracking-wider mb-3">
                     <XCircle className="w-4 h-4 text-[#C2410C]" />
                     <span>Generic Raster (PNG)</span>
                   </div>
 
-                  <div className="w-44 h-44 rounded-2xl overflow-hidden bg-white border border-[var(--peach)]/50 flex items-center justify-center p-4 relative shadow-inner">
+                  <div className="w-44 h-44 rounded-none overflow-hidden bg-white border border-[var(--peach)]/50 flex items-center justify-center p-4 relative shadow-inner">
                     <svg
                       viewBox="0 0 100 100"
                       className="w-full h-full"
@@ -110,13 +110,13 @@ export function VectorExportSection() {
                 </div>
 
                 {/* QRLab Vector SVG */}
-                <div className="p-6 rounded-[24px] bg-[var(--sage)]/30 border border-[var(--sage)] flex flex-col items-center">
+                <div className="p-6 rounded-none bg-[var(--sage)]/30 border border-[var(--sage)] flex flex-col items-center">
                   <div className="flex items-center gap-2 text-[#1B3B2B] font-semibold text-xs uppercase tracking-wider mb-3">
                     <CheckCircle2 className="w-4 h-4 text-[var(--leaf)]" />
                     <span>QRLab Vector (SVG)</span>
                   </div>
 
-                  <div className="w-44 h-44 rounded-2xl overflow-hidden bg-white border border-[var(--sage)] flex items-center justify-center p-4 relative shadow-inner">
+                  <div className="w-44 h-44 rounded-none overflow-hidden bg-white border border-[var(--sage)] flex items-center justify-center p-4 relative shadow-inner">
                     <svg viewBox="0 0 100 100" className="w-full h-full">
                       <rect
                         x="10"

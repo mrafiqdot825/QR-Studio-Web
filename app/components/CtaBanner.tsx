@@ -10,7 +10,7 @@ export function CtaBanner() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Wide Pastel Editorial Banner Card */}
-        <div className="relative rounded-[36px] bg-gradient-to-br from-[var(--bg-surface)] via-[var(--peach-light)] to-[var(--butter-light)] p-8 sm:p-14 md:p-16 overflow-hidden shadow-[0_20px_48px_rgba(74,15,58,0.08)] border border-[var(--border-subtle)]">
+        <div className="relative rounded-none bg-gradient-to-br from-[var(--bg-surface)] via-[var(--peach-light)] to-[var(--butter-light)] p-8 sm:p-14 md:p-16 overflow-hidden shadow-[0_20px_48px_rgba(74,15,58,0.08)] border border-[var(--border-subtle)]">
           {/* Soft background pastel blobs and botanical flourishes */}
           <div className="absolute top-0 right-10 w-80 h-80 bg-[var(--peach)]/30 rounded-full blur-3xl pointer-events-none" />
           <div className="absolute bottom-0 left-10 w-80 h-80 bg-[var(--lavender)]/35 rounded-full blur-3xl pointer-events-none" />
@@ -69,6 +69,17 @@ export function CtaBanner() {
                 <span>Requires Android 8.0+</span>
                 <span>•</span>
                 <span>Free & Open Source</span>
+              </div>
+            </div>
+
+            {/* Right Graphic Preview - Google Play Feature Graphic */}
+            <div className="lg:col-span-5 flex justify-center lg:justify-end">
+              <div className="relative group max-w-sm sm:max-w-md w-full">
+                <img
+                  src="/assets/images/play-store-feature-graphic.png"
+                  alt="QRLab Google Play Store Feature Banner"
+                  className="w-full h-auto object-contain block shadow-2xl transition-transform duration-300 group-hover:scale-[1.02]"
+                />
               </div>
             </div>
           </div>

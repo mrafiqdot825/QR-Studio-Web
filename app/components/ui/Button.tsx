@@ -40,13 +40,13 @@ const variantStyles: Record<ButtonVariant, string> = {
 };
 
 const sizeStyles: Record<ButtonSize, string> = {
-  xs: "px-3 py-1 text-xs rounded-full gap-1.5 font-medium",
-  sm: "px-4 py-2 text-xs sm:text-sm rounded-full gap-2 font-medium",
-  md: "px-5 py-2.5 text-sm sm:text-base rounded-full gap-2.5 font-medium",
-  lg: "px-7 py-3.5 text-base rounded-full gap-3 font-semibold",
-  xl: "px-8 py-4 text-base sm:text-lg rounded-full gap-3.5 font-semibold",
-  icon: "p-2.5 rounded-full aspect-square items-center justify-center",
-  "icon-sm": "p-1.5 rounded-full aspect-square items-center justify-center",
+  xs: "px-3 py-1 text-xs rounded-none gap-1.5 font-medium",
+  sm: "px-4 py-2 text-xs sm:text-sm rounded-none gap-2 font-medium",
+  md: "px-5 py-2.5 text-sm sm:text-base rounded-none gap-2.5 font-medium",
+  lg: "px-7 py-3.5 text-base rounded-none gap-3 font-semibold",
+  xl: "px-8 py-4 text-base sm:text-lg rounded-none gap-3.5 font-semibold",
+  icon: "p-2.5 rounded-none aspect-square items-center justify-center",
+  "icon-sm": "p-1.5 rounded-none aspect-square items-center justify-center",
 };
 
 export const Button = forwardRef<
@@ -77,7 +77,7 @@ export const Button = forwardRef<
 
     const widthClass = fullWidth ? "w-full" : "";
     const glowClass = glow
-      ? "relative after:absolute after:-inset-1 after:rounded-full after:bg-[var(--plum)]/20 after:blur-md after:-z-10 after:opacity-70 hover:after:opacity-100 after:transition-opacity"
+      ? "relative after:absolute after:-inset-1 after:rounded-none after:bg-[var(--plum)]/20 after:blur-md after:-z-10 after:opacity-70 hover:after:opacity-100 after:transition-opacity"
       : "";
     const shimmerClass = shimmer ? "overflow-hidden" : "";
 

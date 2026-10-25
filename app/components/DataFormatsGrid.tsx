@@ -87,7 +87,7 @@ export function DataFormatsGrid() {
             <a
               key={tile.id}
               href={tile.hash}
-              className={`group relative ${tile.bgColor} rounded-[28px] sm:rounded-[32px] p-7 sm:p-9 flex flex-col justify-between overflow-hidden shadow-[0_8px_24px_rgba(74,15,58,0.06)] hover:shadow-[0_16px_36px_rgba(74,15,58,0.12)] transition-all duration-300 hover:-translate-y-1.5`}
+              className={`group relative ${tile.bgColor} rounded-none p-7 sm:p-9 flex flex-col justify-between overflow-hidden shadow-[0_8px_24px_rgba(74,15,58,0.06)] hover:shadow-[0_16px_36px_rgba(74,15,58,0.12)] transition-all duration-300 hover:-translate-y-1.5`}
             >
               {/* Copy */}
               <div className="relative z-10 max-w-[260px] sm:max-w-[290px] space-y-2">
@@ -121,12 +121,12 @@ export function DataFormatsGrid() {
         <div className="max-w-5xl mx-auto mt-8">
           <a
             href="#templates"
-            className="group block bg-[var(--bg-surface)] rounded-[24px] sm:rounded-[28px] p-5 sm:p-6 border border-[var(--border-subtle)] shadow-[0_8px_24px_rgba(74,15,58,0.04)] hover:shadow-[0_14px_32px_rgba(74,15,58,0.08)] transition-all duration-300 hover:-translate-y-0.5"
+            className="group block bg-[var(--bg-surface)] rounded-none p-5 sm:p-6 border border-[var(--border-subtle)] shadow-[0_8px_24px_rgba(74,15,58,0.04)] hover:shadow-[0_14px_32px_rgba(74,15,58,0.08)] transition-all duration-300 hover:-translate-y-0.5"
           >
             <div className="flex items-center justify-between gap-4">
               <div className="flex items-center gap-4">
-                {/* Lavender rounded-square icon tile */}
-                <div className="w-12 h-12 rounded-2xl bg-[var(--lavender)] flex items-center justify-center shrink-0 text-[var(--plum)] shadow-2xs group-hover:scale-105 transition-transform">
+                {/* Lavender icon tile */}
+                <div className="w-12 h-12 rounded-none bg-[var(--lavender)] flex items-center justify-center shrink-0 text-[var(--plum)] shadow-2xs group-hover:scale-105 transition-transform">
                   <Sparkles className="w-6 h-6" />
                 </div>
                 <div>

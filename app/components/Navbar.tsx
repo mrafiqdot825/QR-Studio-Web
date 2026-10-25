@@ -86,18 +86,18 @@ export function Navbar() {
       <header className="fixed top-0 left-0 right-0 z-50 pt-3 sm:pt-4 px-3 sm:px-6 pointer-events-none">
         <div className="max-w-6xl mx-auto pointer-events-auto">
           {/* Morrow Translucent Editorial Floating Capsule */}
-          <div className="editorial-glass-nav rounded-full px-4 sm:px-6 py-2.5 sm:py-3 flex items-center justify-between transition-all duration-300">
+          <div className="editorial-glass-nav rounded-none px-4 sm:px-6 py-2.5 sm:py-3 flex items-center justify-between transition-all duration-300">
             {/* 1. Left: Serif Wordmark & Warm Brand Pill */}
             <a
               href="#"
               onClick={(e) => handleNavClick(e, "#", "Overview")}
               className="flex items-center gap-2.5 sm:gap-3 group select-none shrink-0"
             >
-              <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-2xl bg-[var(--plum)] flex items-center justify-center p-1.5 shadow-xs border border-[var(--plum-hover)] shrink-0 transition-transform group-hover:scale-105">
+              <div className="w-9 h-9 sm:w-10 sm:h-10 shrink-0 transition-transform group-hover:scale-105">
                 <img
                   src="/assets/images/navbar-logo.png"
                   alt="QRLab Logo"
-                  className="w-full h-full object-contain"
+                  className="w-full h-full object-contain drop-shadow-xs"
                 />
               </div>
 
@@ -105,14 +105,14 @@ export function Navbar() {
                 <span className="font-serif text-lg sm:text-2xl font-bold tracking-tight text-[var(--ink)]">
                   QRLab
                 </span>
-                <span className="hidden sm:inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-semibold bg-[var(--plum-light)] text-[var(--plum)]">
+                <span className="hidden sm:inline-flex items-center px-2 py-0.5 rounded-none text-[10px] font-semibold bg-[var(--plum-light)] text-[var(--plum)]">
                   v3.0
                 </span>
               </div>
             </a>
 
             {/* 2. Center: Rounded Floating Nav Links */}
-            <nav className="hidden lg:flex items-center justify-center bg-white/70 border border-[var(--border-subtle)] rounded-full p-1 gap-1 shrink-0 shadow-xs">
+            <nav className="hidden lg:flex items-center justify-center bg-white/70 border border-[var(--border-subtle)] rounded-none p-1 gap-1 shrink-0 shadow-xs">
               {navLinks.map((link) => {
                 const isActive = activeTab === link.label;
                 return (
@@ -120,7 +120,7 @@ export function Navbar() {
                     key={link.label}
                     href={link.href}
                     onClick={(e) => handleNavClick(e, link.href, link.label)}
-                    className={`text-xs xl:text-sm whitespace-nowrap shrink-0 transition-all duration-200 select-none rounded-full px-4 xl:px-5 py-1.5 font-medium ${
+                    className={`text-xs xl:text-sm whitespace-nowrap shrink-0 transition-all duration-200 select-none rounded-none px-4 xl:px-5 py-1.5 font-medium ${
                       isActive
                         ? "bg-[var(--plum)] text-white shadow-xs font-semibold"
                         : "text-[var(--ink-muted)] hover:text-[var(--ink)] hover:bg-[var(--bg-surface)]"
@@ -138,7 +138,7 @@ export function Navbar() {
               <a
                 href="#download"
                 onClick={(e) => handleNavClick(e, "#download", "Download")}
-                className="rounded-full px-4 sm:px-6 py-2 sm:py-2.5 flex items-center gap-2 text-xs sm:text-sm font-semibold bg-[var(--plum)] hover:bg-[var(--plum-hover)] text-white shadow-[0_4px_16px_rgba(74,15,58,0.2)] transition-all duration-200 active:scale-95"
+                className="rounded-none px-4 sm:px-6 py-2 sm:py-2.5 flex items-center gap-2 text-xs sm:text-sm font-semibold bg-[var(--plum)] hover:bg-[var(--plum-hover)] text-white shadow-[0_4px_16px_rgba(74,15,58,0.2)] transition-all duration-200 active:scale-95"
               >
                 <Smartphone className="w-4 h-4 text-[var(--butter)]" />
                 <span className="whitespace-nowrap">Download App</span>
@@ -147,7 +147,7 @@ export function Navbar() {
               {/* Mobile Hamburger Toggle */}
               <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="lg:hidden w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[var(--bg-surface)] border border-[var(--border-subtle)] shadow-xs flex items-center justify-center text-[var(--ink)] hover:bg-[var(--bg-canvas)] ml-1 transition-all"
+                className="lg:hidden w-9 h-9 sm:w-10 sm:h-10 rounded-none bg-[var(--bg-surface)] border border-[var(--border-subtle)] shadow-xs flex items-center justify-center text-[var(--ink)] hover:bg-[var(--bg-canvas)] ml-1 transition-all"
                 aria-label="Toggle navigation"
               >
                 {mobileMenuOpen ? (
@@ -161,7 +161,7 @@ export function Navbar() {
 
           {/* Mobile Sheet Dropdown */}
           {mobileMenuOpen && (
-            <div className="lg:hidden mt-3 bg-[var(--bg-surface)]/95 backdrop-blur-xl rounded-[28px] p-5 border border-[var(--border-subtle)] shadow-[0_16px_36px_rgba(74,15,58,0.12)] animate-in fade-in slide-in-from-top-3">
+            <div className="lg:hidden mt-3 bg-[var(--bg-surface)]/95 backdrop-blur-xl rounded-none p-5 border border-[var(--border-subtle)] shadow-[0_16px_36px_rgba(74,15,58,0.12)] animate-in fade-in slide-in-from-top-3">
               <div className="space-y-1">
                 {allMobileLinks.map((link) => {
                   const isActive = activeTab === link.label;
@@ -170,7 +170,7 @@ export function Navbar() {
                       key={link.label}
                       href={link.href}
                       onClick={(e) => handleNavClick(e, link.href, link.label)}
-                      className={`block px-4 py-2.5 rounded-2xl text-sm transition-all ${
+                      className={`block px-4 py-2.5 rounded-none text-sm transition-all ${
                         isActive
                           ? "bg-[var(--plum)] text-white font-semibold shadow-xs"
                           : "text-[var(--ink-muted)] font-medium hover:text-[var(--ink)] hover:bg-[var(--bg-surface)]"
@@ -186,7 +186,7 @@ export function Navbar() {
                 <a
                   href="#download"
                   onClick={(e) => handleNavClick(e, "#download", "Download")}
-                  className="rounded-full py-3 flex items-center justify-center gap-2 font-semibold text-sm bg-[var(--plum)] text-white shadow-md active:scale-98 transition-all"
+                  className="rounded-none py-3 flex items-center justify-center gap-2 font-semibold text-sm bg-[var(--plum)] text-white shadow-md active:scale-98 transition-all"
                 >
                   <Smartphone className="w-4 h-4 text-[var(--butter)]" />
                   <span>Download for Android</span>
@@ -200,14 +200,14 @@ export function Navbar() {
       {/* Floating Bottom Tab Bar on Mobile */}
       <nav
         aria-label="Mobile Bottom Navigation"
-        className="lg:hidden fixed bottom-3 left-1/2 -translate-x-1/2 z-40 w-[calc(100%-24px)] max-w-sm bg-white/90 backdrop-blur-xl rounded-full px-3 py-2 border border-[var(--border-subtle)] shadow-[0_10px_30px_rgba(74,15,58,0.12)] flex items-center justify-around"
+        className="lg:hidden fixed bottom-3 left-1/2 -translate-x-1/2 z-40 w-[calc(100%-24px)] max-w-sm bg-white/90 backdrop-blur-xl rounded-none px-3 py-2 border border-[var(--border-subtle)] shadow-[0_10px_30px_rgba(74,15,58,0.12)] flex items-center justify-around"
       >
         <a
           href="#"
           onClick={(e) => handleNavClick(e, "#", "Overview")}
           className={`flex flex-col items-center justify-center transition-all ${
             activeTab === "Overview"
-              ? "w-14 h-12 rounded-2xl bg-[var(--plum)] text-white shadow-xs"
+              ? "w-14 h-12 rounded-none bg-[var(--plum)] text-white shadow-xs"
               : "w-12 h-12 text-[var(--ink-muted)] hover:text-[var(--ink)]"
           }`}
           aria-label="Home"
@@ -221,7 +221,7 @@ export function Navbar() {
           onClick={(e) => handleNavClick(e, "#features", "Features")}
           className={`flex flex-col items-center justify-center transition-all ${
             activeTab === "Features"
-              ? "w-14 h-12 rounded-2xl bg-[var(--plum)] text-white shadow-xs"
+              ? "w-14 h-12 rounded-none bg-[var(--plum)] text-white shadow-xs"
               : "w-12 h-12 text-[var(--ink-muted)] hover:text-[var(--ink)]"
           }`}
           aria-label="Features"
@@ -235,7 +235,7 @@ export function Navbar() {
           onClick={(e) => handleNavClick(e, "#studio", "Studio")}
           className={`flex flex-col items-center justify-center transition-all ${
             activeTab === "Studio"
-              ? "w-14 h-12 rounded-2xl bg-[var(--plum)] text-white shadow-xs"
+              ? "w-14 h-12 rounded-none bg-[var(--plum)] text-white shadow-xs"
               : "w-12 h-12 text-[var(--ink-muted)] hover:text-[var(--ink)]"
           }`}
           aria-label="Studio"
@@ -249,7 +249,7 @@ export function Navbar() {
           onClick={(e) => handleNavClick(e, "#templates", "Templates")}
           className={`flex flex-col items-center justify-center transition-all ${
             activeTab === "Templates"
-              ? "w-14 h-12 rounded-2xl bg-[var(--plum)] text-white shadow-xs"
+              ? "w-14 h-12 rounded-none bg-[var(--plum)] text-white shadow-xs"
               : "w-12 h-12 text-[var(--ink-muted)] hover:text-[var(--ink)]"
           }`}
           aria-label="Templates"
@@ -263,7 +263,7 @@ export function Navbar() {
           onClick={(e) => handleNavClick(e, "#download", "Download")}
           className={`flex flex-col items-center justify-center transition-all ${
             activeTab === "Download"
-              ? "w-14 h-12 rounded-2xl bg-[var(--plum)] text-white shadow-xs"
+              ? "w-14 h-12 rounded-none bg-[var(--plum)] text-white shadow-xs"
               : "w-12 h-12 text-[var(--ink-muted)] hover:text-[var(--ink)]"
           }`}
           aria-label="Get App"

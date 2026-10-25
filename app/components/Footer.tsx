@@ -8,17 +8,17 @@ export function Footer() {
   };
 
   return (
-    <footer className="bg-[var(--bg-surface)] rounded-t-[40px] sm:rounded-t-[48px] border-t border-[var(--border-subtle)] pt-16 pb-14 text-[var(--ink-muted)] mt-10">
+    <footer className="bg-[var(--bg-surface)] rounded-none border-t border-[var(--border-subtle)] pt-16 pb-14 text-[var(--ink-muted)] mt-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-[var(--border-subtle)]">
           {/* Brand Info (2 cols) */}
           <div className="lg:col-span-2 space-y-4">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-2xl overflow-hidden shadow-xs border border-[var(--border-subtle)]">
+              <div className="w-10 h-10 shrink-0 transition-transform hover:scale-105">
                 <img
                   src="/assets/images/icon.png"
                   alt="QRLab Icon"
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-contain drop-shadow-xs"
                 />
               </div>
               <span className="font-serif text-2xl font-bold text-[var(--ink)] tracking-tight">

@@ -26,7 +26,7 @@ export function ScannerSection() {
   return (
     <section className="py-20 md:py-28 relative bg-[var(--bg-canvas)]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-[var(--bg-surface)] rounded-[32px] border border-[var(--border-subtle)] shadow-[0_16px_36px_rgba(74,15,58,0.06)] overflow-hidden p-8 sm:p-12">
+        <div className="bg-[var(--bg-surface)] rounded-none border border-[var(--border-subtle)] shadow-[0_16px_36px_rgba(74,15,58,0.06)] overflow-hidden p-8 sm:p-12">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
             {/* Left Column: Visual Mockup */}
             <div className="lg:col-span-5 flex justify-center order-2 lg:order-1">
@@ -61,7 +61,7 @@ export function ScannerSection() {
                   const Icon = item.icon;
                   return (
                     <div key={idx} className="flex items-start gap-4">
-                      <div className={`p-3 rounded-2xl ${item.pastel} text-[var(--plum)] flex-shrink-0 mt-0.5 shadow-2xs`}>
+                      <div className={`p-3 rounded-none ${item.pastel} text-[var(--plum)] flex-shrink-0 mt-0.5 shadow-2xs`}>
                         <Icon className="w-4 h-4" />
                       </div>
                       <div>

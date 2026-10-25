@@ -68,13 +68,13 @@ export function CustomizationShowcase() {
               return (
                 <div
                   key={idx}
-                  className="p-6 rounded-[28px] bg-[var(--bg-surface)] border border-[var(--border-subtle)] shadow-[0_8px_24px_rgba(74,15,58,0.04)] hover:shadow-[0_14px_32px_rgba(74,15,58,0.08)] transition-all duration-300 hover:-translate-y-0.5 group"
+                  className="p-6 rounded-none bg-[var(--bg-surface)] border border-[var(--border-subtle)] shadow-[0_8px_24px_rgba(74,15,58,0.04)] hover:shadow-[0_14px_32px_rgba(74,15,58,0.08)] transition-all duration-300 hover:-translate-y-0.5 group"
                 >
                   <div className="flex items-start justify-between gap-4">
                     <div className="flex items-start gap-4">
-                      {/* Pastel Rounded Square Icon */}
+                      {/* Pastel Square Icon */}
                       <div
-                        className={`p-3 rounded-2xl ${feat.pastel} text-[var(--ink)] flex-shrink-0 group-hover:scale-105 transition-transform`}
+                        className={`p-3 rounded-none ${feat.pastel} text-[var(--ink)] flex-shrink-0 group-hover:scale-105 transition-transform`}
                       >
                         <Icon className="w-5 h-5 text-[var(--plum)]" />
                       </div>

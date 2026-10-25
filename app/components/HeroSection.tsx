@@ -95,17 +95,17 @@ export function HeroSection() {
               </Button>
             </div>
 
-            {/* Trust points list in soft rounded pills */}
+            {/* Trust points list in rectangular pills */}
             <div className="pt-2 flex flex-wrap items-center justify-center lg:justify-start gap-3 text-xs sm:text-sm text-[var(--ink-muted)]">
-              <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/80 border border-[var(--border-subtle)] shadow-xs font-medium">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-none bg-white/80 border border-[var(--border-subtle)] shadow-xs font-medium">
                 <CheckCircle2 className="w-4 h-4 text-[var(--leaf)]" />
                 Zero Cloud Tracking
               </span>
-              <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/80 border border-[var(--border-subtle)] shadow-xs font-medium">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-none bg-white/80 border border-[var(--border-subtle)] shadow-xs font-medium">
                 <CheckCircle2 className="w-4 h-4 text-[var(--leaf)]" />
                 Infinite SVG Vector
               </span>
-              <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/80 border border-[var(--border-subtle)] shadow-xs font-medium">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-none bg-white/80 border border-[var(--border-subtle)] shadow-xs font-medium">
                 <CheckCircle2 className="w-4 h-4 text-[var(--leaf)]" />
                 100% Free & Offline
               </span>
@@ -117,14 +117,14 @@ export function HeroSection() {
             <div className="w-full max-w-sm sm:max-w-md relative">
               {/* Soft Organic Dynamic Blob Backdrop - harmonized with active theme */}
               <div
-                className="absolute -inset-6 rounded-[56px] filter blur-2xl -z-10 transition-all duration-700 ease-out"
+                className="absolute -inset-6 rounded-none filter blur-2xl -z-10 transition-all duration-700 ease-out"
                 style={{
                   background: `radial-gradient(ellipse at 65% 35%, ${currentTheme.gradient[2]} 0%, ${currentTheme.gradient[1]} 50%, ${currentTheme.gradient[0]} 100%)`,
                   opacity: 0.85,
                 }}
               />
               <div
-                className="absolute -inset-3 rounded-[44px] filter blur-xl -z-10 transition-all duration-700 ease-out"
+                className="absolute -inset-3 rounded-none filter blur-xl -z-10 transition-all duration-700 ease-out"
                 style={{
                   background: `linear-gradient(135deg, ${currentTheme.gradient[1]} 0%, ${currentTheme.gradient[2]} 100%)`,
                   boxShadow: `0 24px 60px ${currentTheme.glowColor}`,
@@ -134,7 +134,7 @@ export function HeroSection() {
 
               {/* Editorial Preview Card - harmonized with warm body canvas */}
               <div
-                className="relative rounded-[32px] bg-[var(--bg-surface)]/95 backdrop-blur-md p-6 sm:p-7 border border-[var(--border-subtle)] transition-all duration-500"
+                className="relative rounded-none bg-[var(--bg-surface)]/95 backdrop-blur-md p-6 sm:p-7 border border-[var(--border-subtle)] transition-all duration-500"
                 style={{
                   boxShadow: `0 20px 48px -12px ${currentTheme.glowColor}, 0 12px 32px rgba(74, 15, 58, 0.06)`,
                 }}
@@ -161,10 +161,10 @@ export function HeroSection() {
                     </span>
                   </div>
 
-                  <div className="flex items-center bg-white/70 backdrop-blur-xs p-1 rounded-full text-xs font-medium border border-[var(--border-subtle)]">
+                  <div className="flex items-center bg-white/70 backdrop-blur-xs p-1 rounded-none text-xs font-medium border border-[var(--border-subtle)]">
                     <button
                       onClick={() => setActiveTab("live")}
-                      className={`px-3 py-1 rounded-full transition-all duration-200 select-none ${
+                      className={`px-3 py-1 rounded-none transition-all duration-200 select-none ${
                         activeTab === "live"
                           ? "bg-[var(--plum)] text-white font-semibold shadow-xs"
                           : "text-[var(--ink-muted)] hover:text-[var(--ink)]"
@@ -174,7 +174,7 @@ export function HeroSection() {
                     </button>
                     <button
                       onClick={() => setActiveTab("app")}
-                      className={`px-3 py-1 rounded-full transition-all duration-200 select-none ${
+                      className={`px-3 py-1 rounded-none transition-all duration-200 select-none ${
                         activeTab === "app"
                           ? "bg-[var(--plum)] text-white font-semibold shadow-xs"
                           : "text-[var(--ink-muted)] hover:text-[var(--ink)]"
@@ -189,13 +189,13 @@ export function HeroSection() {
                   <>
                     {/* Live Scannable QR Canvas Container */}
                     <div
-                      className="mt-5 p-6 rounded-3xl flex flex-col items-center justify-center relative overflow-hidden transition-all duration-500 shadow-inner"
+                      className="mt-5 p-6 rounded-none flex flex-col items-center justify-center relative overflow-hidden transition-all duration-500 shadow-inner"
                       style={{
                         background: `linear-gradient(135deg, ${currentTheme.gradient[0]}, ${currentTheme.gradient[1]}, ${currentTheme.gradient[2]})`,
                       }}
                     >
                       {/* Floating QR Code Box (pure white background for 100% scannability) */}
-                      <div className="w-56 h-56 sm:w-60 sm:h-60 p-3.5 bg-white rounded-2xl shadow-[0_8px_24px_rgba(74,15,58,0.08)] border border-[var(--border-subtle)] flex items-center justify-center transition-all duration-300 hover:scale-[1.02]">
+                      <div className="w-56 h-56 sm:w-60 sm:h-60 p-3.5 bg-white rounded-none shadow-[0_8px_24px_rgba(74,15,58,0.08)] border border-[var(--border-subtle)] flex items-center justify-center transition-all duration-300 hover:scale-[1.02]">
                         <div
                           className="w-full h-full"
                           dangerouslySetInnerHTML={{ __html: heroSvgString }}
@@ -203,7 +203,7 @@ export function HeroSection() {
                       </div>
 
                       {/* Status indicator */}
-                      <div className="mt-4 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/90 backdrop-blur-sm text-[11px] font-semibold text-[var(--ink)] shadow-xs border border-[var(--border-subtle)]">
+                      <div className="mt-4 inline-flex items-center gap-1.5 px-3 py-1 rounded-none bg-white/90 backdrop-blur-sm text-[11px] font-semibold text-[var(--ink)] shadow-xs border border-[var(--border-subtle)]">
                         <span
                           className="w-2 h-2 rounded-full animate-pulse transition-colors duration-500"
                           style={{ backgroundColor: currentTheme.accentColor }}
@@ -251,13 +251,13 @@ export function HeroSection() {
                         <span className="font-semibold text-[var(--ink)]">
                           Module Shape:
                         </span>
-                        <div className="flex gap-1 bg-white/70 backdrop-blur-xs p-1 rounded-full border border-[var(--border-subtle)]">
+                        <div className="flex gap-1 bg-white/70 backdrop-blur-xs p-1 rounded-none border border-[var(--border-subtle)]">
                           {(["rounded", "dots", "square"] as ModuleShape[]).map(
                             (shape) => (
                               <button
                                 key={shape}
                                 onClick={() => setModuleShape(shape)}
-                                className={`px-3 py-1 rounded-full text-xs capitalize transition-all duration-200 select-none active:scale-95 ${
+                                className={`px-3 py-1 rounded-none text-xs capitalize transition-all duration-200 select-none active:scale-95 ${
                                   moduleShape === shape
                                     ? "bg-[var(--plum)] text-white font-semibold shadow-xs"
                                     : "text-[var(--ink-muted)] hover:text-[var(--ink)]"
@@ -297,7 +297,7 @@ export function HeroSection() {
       <div className="hidden sm:flex justify-center pb-4 pt-1 text-[var(--ink-muted)]">
         <a
           href="#features"
-          className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-white/70 hover:bg-white text-xs font-medium text-[var(--ink-muted)] hover:text-[var(--plum)] border border-[var(--border-subtle)] shadow-xs transition-all hover:scale-102"
+          className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-none bg-white/70 hover:bg-white text-xs font-medium text-[var(--ink-muted)] hover:text-[var(--plum)] border border-[var(--border-subtle)] shadow-xs transition-all hover:scale-102"
           aria-label="Scroll to features"
         >
           <span>Explore features</span>

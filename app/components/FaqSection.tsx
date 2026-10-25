@@ -51,7 +51,7 @@ export function FaqSection() {
             return (
               <div
                 key={idx}
-                className="bg-[var(--bg-surface)] rounded-[24px] border border-[var(--border-subtle)] shadow-[0_6px_20px_rgba(74,15,58,0.03)] hover:shadow-[0_10px_28px_rgba(74,15,58,0.06)] overflow-hidden transition-all duration-200"
+                className="bg-[var(--bg-surface)] rounded-none border border-[var(--border-subtle)] shadow-[0_6px_20px_rgba(74,15,58,0.03)] hover:shadow-[0_10px_28px_rgba(74,15,58,0.06)] overflow-hidden transition-all duration-200"
               >
                 <button
                   onClick={() => setOpenIndex(isOpen ? null : idx)}

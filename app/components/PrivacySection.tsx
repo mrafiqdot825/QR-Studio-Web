@@ -55,12 +55,12 @@ export function PrivacySection() {
             return (
               <div
                 key={idx}
-                className="bg-[var(--bg-surface)] border border-[var(--border-subtle)] rounded-[28px] p-7 flex flex-col justify-between shadow-[0_8px_24px_rgba(74,15,58,0.04)] hover:shadow-[0_14px_32px_rgba(74,15,58,0.08)] transition-all duration-300 hover:-translate-y-1"
+                className="bg-[var(--bg-surface)] border border-[var(--border-subtle)] rounded-none p-7 flex flex-col justify-between shadow-[0_8px_24px_rgba(74,15,58,0.04)] hover:shadow-[0_14px_32px_rgba(74,15,58,0.08)] transition-all duration-300 hover:-translate-y-1"
               >
                 <div>
                   <div className="flex items-center justify-between mb-5">
                     <div
-                      className={`w-12 h-12 rounded-2xl ${pillar.pastel} flex items-center justify-center shrink-0`}
+                      className={`w-12 h-12 rounded-none ${pillar.pastel} flex items-center justify-center shrink-0`}
                     >
                       <Icon className="w-5 h-5 text-[var(--plum)]" />
                     </div>
@@ -81,7 +81,7 @@ export function PrivacySection() {
         </div>
 
         {/* Comparison Table vs Generic Services */}
-        <div className="bg-[var(--bg-surface)] rounded-[32px] border border-[var(--border-subtle)] shadow-[0_12px_32px_rgba(74,15,58,0.06)] p-6 sm:p-10">
+        <div className="bg-[var(--bg-surface)] rounded-none border border-[var(--border-subtle)] shadow-[0_12px_32px_rgba(74,15,58,0.06)] p-6 sm:p-10">
           <h3 className="font-serif text-2xl sm:text-3xl font-bold text-center text-[var(--ink)] mb-8">
             The Truth: QRLab vs. Subscription Redirect Sites
           </h3>

@@ -41,7 +41,7 @@ export function TemplatesGallery() {
             <button
               key={cat}
               onClick={() => setSelectedCategory(cat)}
-              className={`px-4 py-2 rounded-full text-xs sm:text-sm font-medium whitespace-nowrap transition-all duration-200 select-none active:scale-95 ${
+              className={`px-4 py-2 rounded-none text-xs sm:text-sm font-medium whitespace-nowrap transition-all duration-200 select-none active:scale-95 ${
                 selectedCategory === cat
                   ? "bg-[var(--plum)] text-white shadow-xs font-semibold"
                   : "bg-[var(--bg-surface)] text-[var(--ink-muted)] hover:text-[var(--ink)] border border-[var(--border-subtle)] hover:bg-white"
@@ -67,17 +67,17 @@ export function TemplatesGallery() {
             return (
               <div
                 key={template.id}
-                className="bg-[var(--bg-surface)] rounded-[28px] p-5 border border-[var(--border-subtle)] shadow-[0_8px_24px_rgba(74,15,58,0.04)] hover:shadow-[0_16px_36px_rgba(74,15,58,0.09)] transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between group"
+                className="bg-[var(--bg-surface)] rounded-none p-5 border border-[var(--border-subtle)] shadow-[0_8px_24px_rgba(74,15,58,0.04)] hover:shadow-[0_16px_36px_rgba(74,15,58,0.09)] transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between group"
               >
                 <div>
                   {/* Visual Preview Container */}
                   <div
-                    className="p-5 rounded-[22px] flex items-center justify-center relative mb-4 shadow-inner"
+                    className="p-5 rounded-none flex items-center justify-center relative mb-4 shadow-inner"
                     style={{
                       background: `linear-gradient(135deg, ${template.gradient[0]}, ${template.gradient[1]})`,
                     }}
                   >
-                    <div className="w-36 h-36 p-2.5 bg-white rounded-xl shadow-[0_4px_16px_rgba(74,15,58,0.06)] border border-[var(--border-subtle)] flex items-center justify-center transition-transform group-hover:scale-105">
+                    <div className="w-36 h-36 p-2.5 bg-white rounded-none shadow-[0_4px_16px_rgba(74,15,58,0.06)] border border-[var(--border-subtle)] flex items-center justify-center transition-transform group-hover:scale-105">
                       <div
                         className="w-full h-full"
                         dangerouslySetInnerHTML={{ __html: svgString }}
@@ -127,7 +127,7 @@ export function TemplatesGallery() {
         </div>
 
         {/* Explore More Banner with app screenshot */}
-        <div className="mt-14 bg-[var(--bg-surface)] rounded-[32px] p-8 sm:p-10 border border-[var(--border-subtle)] shadow-[0_12px_32px_rgba(74,15,58,0.06)] flex flex-col md:flex-row items-center justify-between gap-8">
+        <div className="mt-14 bg-[var(--bg-surface)] rounded-none p-8 sm:p-10 border border-[var(--border-subtle)] shadow-[0_12px_32px_rgba(74,15,58,0.06)] flex flex-col md:flex-row items-center justify-between gap-8">
           <div className="space-y-2.5 max-w-xl text-center md:text-left">
             <span className="text-xs font-semibold text-[var(--plum)] uppercase tracking-wider">
               Explore Tab in Mobile App
